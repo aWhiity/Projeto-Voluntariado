@@ -1,6 +1,11 @@
 <?php 
 
-    require "organizacao_form.view.php";
+    require "../view/organizacao_form.view.php";
+    require "../config/database.php";
 
+    class OrganizaçãoFormController (){
+
+        private 
+    }
     
-?>
+    ?>

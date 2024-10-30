@@ -23,13 +23,12 @@ class LoginController {
         $senha = $_POST['senha'] ?? '';
 
         if ($this->loginModel->validateUser($usuario, $senha)) {
-            // Supondo que você queira manter a sessão do usuário logado
             session_start();
             $_SESSION['logged_in'] = true;
-            $_SESSION['usuario'] = $usuario; // Você pode armazenar o nome do usuário na sessão
+            $_SESSION['usuario'] = $usuario; 
             $this->redirectTo('dashboard.view.php');
         } else {
-            // Redireciona para a página de login com um erro
+            
             $this->redirectTo('login.view.php?error=invalid_credentials');
         }
     }
@@ -45,5 +44,4 @@ class LoginController {
     }
 }
 
-// Instanciar o controlador
 new LoginController();

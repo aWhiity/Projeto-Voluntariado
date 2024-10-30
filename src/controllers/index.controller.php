@@ -6,10 +6,9 @@ class IndexController {
     }
 
     public function handleRequest() {
-        // Aqui você pode verificar a sessão ou realizar redirecionamentos
+        
         session_start();
         
-        // Verifique se o usuário está logado
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             $this->redirectTo('dashboard.view.php');
         } else {

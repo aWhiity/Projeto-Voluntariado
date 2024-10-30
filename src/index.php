@@ -6,8 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <?php require('controllers/login.controller.php'); ?>
+    <?php require('../src/controllers/index.controller.php') ?>
 
 </body>
 </html>

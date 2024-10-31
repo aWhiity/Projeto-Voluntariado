@@ -17,11 +17,6 @@
             } catch (Exception $e) {
                 die("Erro na conexão com o Banco de Dados.".$e->getMessage());
             }
-
-            //$conexao = new mysqli($host, $user, $password, $dbname);
-            //if(!$conexao) {
-            //    die("Erro na conexão com o Banco de Dados.". mysqli_error($conexao));
-            //}
         }
     }
 ?>

@@ -1,6 +1,6 @@
 <?php 
 
-    require 'D:\xampp\htdocs\Projeto-Voluntariado\src\views\organizacao_form.view.php';
+    require 'D:\xampp\htdocs\Projeto-Voluntariado\src\views\cadastrar_voluntario.view.php';
     //require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\controllers\organizacao_form.controller.php';
 
     class VoluntarioFormController {
@@ -11,21 +11,22 @@
         private $telefone;
         private $email;
         private $senha;
-        private $descricao;
-        private $areaAcao;
+
+        private $voluntarioModel;
 
         public function __construct($dados) {
             $this->nome = $dados['nome'] ?? null;
             $this->senha = $dados['senha'] ?? null;
-            $this->cpf = $dados['nr_documento'] ?? null;
+            $this->cpf = $dados['cpf'] ?? null;
             $this->endereco = $dados['endereco'] ?? null;
             $this->telefone = $dados['telefone'] ?? null;
             $this->email = $dados['email'] ?? null;
             $this->descricao = $dados['descricao'] ?? null;
             $this->areaAcao = $dados['areaAcao'] ?? null;
+        
         }
          
-        public function validarResultados() : int {
+        public function validarResultados() {
 
             $erro = 0;
             
@@ -34,9 +35,6 @@
                 $erro++;
             } if (empty($this->cpf)){
                 echo "Número de Identificação obrigatório!<br>";
-                $erro++;
-            } if (empty($this->endereco)){
-                echo "Endereço obrigatório!<br>";
                 $erro++;
             } if (empty($this->telefone)){
                 echo "Telefone obrigatório!<br>";
@@ -53,8 +51,8 @@
 
         public function adicionarResultados(){
             
-            $model = new OrganizacaoModel();
-            $model->adicionarDadosFormulario($this);
+            $model = new Voluntario();
+            $model->cadastrar($this);
         
         }
 
@@ -82,13 +80,6 @@
             return $this->senha;
         }
 
-        public function getDescricao() {
-            return $this->descricao;
-        }
-
-        public function getAreaAcao() {
-            return $this->areaAcao;
-        }
 
     }
 
@@ -96,7 +87,7 @@
         $voluntarioController = new VoluntarioFormController($_POST);
         if ($voluntarioController->validarResultados()==0){
            
-           require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\models\organizacao.model.php';
+           require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\models\voluntario.model.php';
            require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
            $feedback = $voluntarioController->adicionarResultados();
            

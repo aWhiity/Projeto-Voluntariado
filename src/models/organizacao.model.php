@@ -15,7 +15,7 @@
 
         public function testarConexao() {
 
-            $this->conectar();
+            //$this->conectar();
             var_dump($this->pdo);
             if ($this->pdo) {
                 echo "Acesso ao PDO na classe filha funcionando.";

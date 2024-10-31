@@ -16,6 +16,7 @@
             <label>Endereço: </label> <input type="text" name="endereco" value =<?= $endereco ?? '' ?> > <br>
             <label>Telefone: </label> <input type="text" name="telefone" value =<?= $telefone ?? '' ?> > <br>
             <label>Email: </label> <input type="text" name="email" value =<?= $email ?? '' ?> > <br>
+            <label>Senha: </label> <input type="text" name="senha" value =<?= $senha ?? '' ?> > <br>
             <label>Descrição: </label> <input type="text" name="descricao" value =<?= $descricao ?? '' ?> > <br>
             <label for="areaAcao">Área de ação: </label> <select id="areaAcao" name="areaAcao" >
                 <option value="">Selecione um tipo de ação</option>

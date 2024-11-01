@@ -23,8 +23,7 @@
                 echo "Erro ao acessar o PDO.";
             }
         }
-        //, email, senha, data_criacao
-         //, :email, :senha, :data_criacao
+       
         public function adicionarDadosFormulario($objetoOrganizacao)  {
 
             $nome = $objetoOrganizacao->getNome();
@@ -35,9 +34,10 @@
             $senha = $objetoOrganizacao->getSenha();
             $descricao = $objetoOrganizacao->getDescricao();
             $area_acao = $objetoOrganizacao->getAreaAcao();
+            $dataCriacao = date('Y-d-m');
+            var_dump($dataCriacao);
 
-
-            $query = $this->pdo->prepare("insert into organizacao (nome, cnpj, telefone, endereco, email, senha, descricao, data_criacao) values (:nome, :nr_documento, :telefone, :endereco, :email, :senha, :descricao, :area_acao)");
+            $query = $this->pdo->prepare("insert into organizacao (nome, cnpj, telefone, endereco, email, senha, descricao, data_criacao) values (:nome, :nr_documento, :telefone, :endereco, :email, :senha, :descricao, :data_criacao)");
            
             $query->bindParam(':nome', $nome);
             $query->bindParam(':nr_documento', $nr_documento);
@@ -46,7 +46,7 @@
             $query->bindParam(':email', $email);
             $query->bindParam(':senha', $senha);
             $query->bindParam(':descricao', $descricao);
-            $query->bindParam(':area_acao', $area_acao);
+            $query->bindParam(':data_criacao', $dataCriacao);
                     
             $query->execute();
 

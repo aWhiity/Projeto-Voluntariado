@@ -25,31 +25,44 @@
             $this->areaAcao = $dados['areaAcao'] ?? null;
         }
          
-        public function validarResultados() : int {
+        public function validarSeVazio() : int {
 
             $erro = 0;
             
             if (empty($this->nome)){
-                echo "Nome obrigatório!<br>";
+                echo "<div id='erro'>Nome obrigatório!<br>";
                 $erro++;
             } if (empty($this->nrIdenficacao)){
-                echo "Número de Identificação obrigatório!<br>";
+                echo "<div id='erro'>Número de Identificação obrigatório!<br>";
                 $erro++;
             } if (empty($this->endereco)){
-                echo "Endereço obrigatório!<br>";
+                echo "<div id='erro'>Endereço obrigatório!</div>";
                 $erro++;
             } if (empty($this->telefone)){
-                echo "Telefone obrigatório!<br>";
+                echo "<div id='erro'>Telefone obrigatório!<br>";
                 $erro++;
             } if (empty($this->email)){
-                echo "Email obrigatório!<br>";
+                echo "<div id='erro'>Email obrigatório!<br>";
                 $erro++;
             } if (empty($this->senha)){
-                echo "Senha obrigatória!";
+                echo "<div id='erro'>Senha obrigatória!";
                 $erro++;
             }
             return $erro;
         }
+
+        public function validarValidade(){
+
+            $erro = 0; 
+
+            if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+                echo"<div id='erro'>Por favor, insira um email válido!";
+                $erro++;
+            }
+
+        }
+
+
 
         public function adicionarResultados(){
             
@@ -94,7 +107,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $organizacaoController = new OrganizaçãoFormController($_POST);
-        if ($organizacaoController->validarResultados()==0){
+        if ($organizacaoController->validarSeVazio()==0 && $organizacaoController->validarValidade()==0 ){
            
            require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\models\organizacao.model.php';
            require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';

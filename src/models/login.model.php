@@ -1,9 +1,9 @@
 <?php 
 
 class LoginModel {
-    public function validateUser($usuario, $senha) {
+    public function validarUsuario($usuario, $senha) {
         
-        if ($usuario === 'barbara' && $senha === '1234') {
+        if ($usuario === '12345' && $senha === '1234') {
             return true; 
         }
         return false; 

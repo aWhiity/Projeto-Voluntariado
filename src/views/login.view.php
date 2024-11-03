@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="https://cdn.simplecss.org/simple.css"> -->
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    >
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css"> 
+    
     <title>Login</title>
 </head>
 <body>
     <h1>Login</h1>
 
     <form method="post" action="../controllers/login.controller.php">
-        <label>Usuário: </label>
+        <label>CPF/CNPJ: </label>
         <input type="text" name="usuario" required>
         <label>Senha: </label>
         <input type="password" name="senha" required>

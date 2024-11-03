@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <?php 
+    <?php
+        
         require('../src/controllers/index.controller.php');
         $indexController = new IndexController();
     ?>

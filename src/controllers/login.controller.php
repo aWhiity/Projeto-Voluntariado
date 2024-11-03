@@ -7,38 +7,39 @@ class LoginController {
 
     public function __construct() {
         $this->loginModel = new LoginModel();
-        $this->handleRequest();
+        $this->verificar();
     }
 
-    private function handleRequest() {
+    private function verificar() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->validateLogin();
+            $this->validarLogin();
         } else {
-            $this->redirectToLogin();
+            $this->redirecionarLogin();
         }
     }
 
-    private function validateLogin() {
+    private function validarLogin() {
         $usuario = $_POST['usuario'] ?? '';
         $senha = $_POST['senha'] ?? '';
 
-        if ($this->loginModel->validateUser($usuario, $senha)) {
+        if ($this->loginModel->validarUsuario($usuario, $senha)) {
             session_start();
             $_SESSION['logged_in'] = true;
             $_SESSION['usuario'] = $usuario; 
-            $this->redirectTo('dashboard.view.php');
+            
+            $this->redirecionar('homePessoa.view.php');
         } else {
             
-            $this->redirectTo('login.view.php?error=invalid_credentials');
+            $this->redirecionar('login.view.php?error=invalid_credentials');
         }
     }
 
-    private function redirectTo($view) {
+    private function redirecionar($view) {
         header("Location: ../views/$view");
         exit();
     }
 
-    private function redirectToLogin() {
+    private function redirecionarLogin() {
         header("Location: ../views/login.view.php");
         exit();
     }

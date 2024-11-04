@@ -26,17 +26,34 @@ class Voluntario extends Database {
     
     public function editar($objetoVoluntario) {
         try {
-            $query = $this->pdo->prepare("UPDATE voluntario set nome = :nome, cpf = :cpf, telefone = :telefone, email = :email, senha = :senha, data_edicao = :data_edicao where id = :id");
+            $query = $this->pdo->prepare("UPDATE voluntario set nome = :nome, cpf = :cpf, telefone = :telefone, email = :email, senha = :senha, data_ultima_modificacao = :data_ultima_modificacao where id = :id");
     
+            $query->bindValue(":id", $objetoVoluntario->getId());
             $query->bindValue(":nome", $objetoVoluntario->getNome());
             $query->bindValue(":cpf", $objetoVoluntario->getCpf());
             $query->bindValue(":telefone", $objetoVoluntario->getTelefone());
             $query->bindValue(":email", $objetoVoluntario->getEmail());
             $query->bindValue(":senha", $objetoVoluntario->getSenha());
-            $query->bindValue(":id", $objetoVoluntario->getId());
-            $query->bindValue(":data_edicao", date('Y-m-d')); 
+            $query->bindValue(":data_ultima_modificacao", date('Y-m-d')); 
     
             $query->execute();
+        } catch (PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function verificarLoginVoluntario($email, $senha) {
+        try {
+            $query = $this->pdo->prepare("SELECT * from voluntario where email = :email and senha = :senha");
+            $query->bindValue(":email", $email());
+            $query->bindValue(":senha", $senha());
+            $query->execute();
+            $resultado = $query->fetch(PDO::FETCH_ASSOC);
+            if ($resultado) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (PDOException $e) {
             return 'Error: ' . $e->getMessage();
         }

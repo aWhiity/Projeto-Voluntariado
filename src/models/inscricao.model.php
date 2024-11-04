@@ -24,13 +24,13 @@ class Inscricao extends Database {
     
     public function editar($objetoInscricao) {
         try {
-            $query = $this->pdo->prepare("UPDATE inscricao set id_oportunidade = :id_oportunidade, id_voluntario = :id_voluntario, status = :status, data_edicao = :data_edicao where id = :id");
+            $query = $this->pdo->prepare("UPDATE inscricao set id_oportunidade = :id_oportunidade, id_voluntario = :id_voluntario, status = :status, data_ultima_modificacao = :data_ultima_modificacao where id = :id");
     
             $query->bindValue(":id", $objetoInscricao->getId());
             $query->bindValue(":id_oportunidade", $objetoInscricao->getIdOportunidade());
             $query->bindValue(":id_voluntario", $objetoInscricao->getIdVoluntario());
             $query->bindValue(":status", $objetoInscricao->getStatus());
-            $query->bindValue(":data_edicao", date('Y-m-d')); 
+            $query->bindValue(":data_ultima_modificacao", date('Y-m-d')); 
     
             $query->execute();
         } catch (PDOException $e) {

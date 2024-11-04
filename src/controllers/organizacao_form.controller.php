@@ -62,7 +62,7 @@
             return $this->nome;
         }
 
-        public function getNrIdenficacao() {
+        public function getCpf() {
             return $this->cpf;
         }
 

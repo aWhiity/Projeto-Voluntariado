@@ -10,9 +10,9 @@ class IndexController {
         session_start();
         
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-            $this->redirecionar('homePessoa.view.php');
+            $this->redirecionar('listar_voluntarios.view.php');
         } else {
-            $this->redirecionar('login.view.php');
+            $this->redirecionar('listar_voluntarios.view.php');
         }
     }
 

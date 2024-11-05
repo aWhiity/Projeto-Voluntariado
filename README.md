@@ -6,7 +6,7 @@ Este projeto é uma plataforma de voluntariado que conecta pessoas físicas e or
 ## Participantes
 - Bárbara Hoffmam Wosiack - Controle de login e dashboards de voluntário e organização;
 - Luiz Felipe Hildebrant - Controle de cadastro e listagem de oportunidades, voluntários e organizações;
-- Milena - Criação dos arquivos model e banco de dados.
+- Milena Alves Andrade - Criação dos arquivos model e banco de dados.
 
 ## Instalação
 Pré-requisitos:
@@ -17,13 +17,14 @@ Configuração do Banco de Dados:
 
 Abra o phpMyAdmin e crie um banco de dados chamado voluntariado.
 Importe o arquivo voluntariado.sql para configurar as tabelas.
-Configuração do Projeto:
+Defina o nome do projeto como Projeto-Voluntariado.
 
+Configuração do Projeto:
 Defina os parâmetros de conexão com o banco de dados no arquivo config.php, localizado na pasta src.
 Iniciar o Projeto:
 
 No painel do XAMPP, ative o servidor Apache e o MySQL.
-Acesse http://localhost/nomedopastaprojeto no navegador para iniciar a aplicação.
+Acesse http://localhost/Projeto-Voluntariado no navegador para iniciar a aplicação.
 
 
 ## Uso
@@ -37,6 +38,9 @@ Como organização, é possível criar pedidos de ajuda e avaliar os voluntário
 - Dashboard para Voluntários;
 - Dashboard para Organizações.
 
-## Funcionalidades faltantes
-- Conectividade ao banco de dados para visualização das tabelas nas páginas iniciais;
-- Cadastro de/para oportunidades;
+## Bugs e Funcionalidades faltantes
+- Listar_organizacao.model e listar_voluntario.model não estão ligados a controller e view.
+- Bug no pedido de ajuda de voluntariado na homeOrganizacao.
+- Falhas nas avaliações de organizações e voluntários.
+- Página de perfil não implementada.
+- Bugs nas páginas iniciais.

@@ -21,15 +21,21 @@ class LoginController {
     private function validarLogin() {
         $usuario = $_POST['usuario'] ?? '';
         $senha = $_POST['senha'] ?? '';
+        $isVoluntario = isset($_POST['voluntario']);
 
         if ($this->loginModel->validarUsuario($usuario, $senha)) {
             session_start();
             $_SESSION['logged_in'] = true;
-            $_SESSION['usuario'] = $usuario; 
-            
-            $this->redirecionar('homePessoa.view.php');
+            $_SESSION['usuario'] = $usuario;
+
+            // Redireciona com base no tipo de usuário (voluntário ou organização)
+            if ($isVoluntario) {
+                $this->redirecionar('homePessoa.view.php');
+            } else {
+                $this->redirecionar('homeOrg.view.php');
+            }
         } else {
-            
+            // Se as credenciais forem inválidas, redireciona de volta ao login com mensagem de erro
             $this->redirecionar('login.view.php?error=invalid_credentials');
         }
     }

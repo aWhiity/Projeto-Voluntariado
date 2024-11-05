@@ -11,10 +11,14 @@
     <h1>Login</h1>
 
     <form method="post" action="../controllers/login.controller.php">
-        <label>CPF/CNPJ: </label>
+        <label>Email: </label>
         <input type="text" name="usuario" required>
         <label>Senha: </label>
         <input type="password" name="senha" required>
+        <br>
+        <input type="checkbox" id="voluntarioCheck" name="voluntario" />
+        <label for="voluntarioCheck">Sou voluntário</label>
+        <br>
         <button type="submit">Enviar</button>
     </form>
 

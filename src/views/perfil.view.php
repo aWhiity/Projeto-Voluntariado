@@ -6,10 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-        
-        require('../src/controllers/index.controller.php');
-        $indexController = new IndexController();
-    ?>
+    <h1>Meu perfil</h1>
+    
 </body>
 </html>

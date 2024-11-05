@@ -1,12 +1,12 @@
 <?php 
 
-    require 'C:\xampp\htdocs\Projeto-Voluntariado\src\views/organizacao_form.view.php';
+    require 'D:\xampp\htdocs\Projeto-Voluntariado\src\views\organizacao_form.view.php';
     //require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\controllers\organizacao_form.controller.php';
 
-    class OrganizaçãoFormController {
+    class VoluntarioFormController {
 
         private $nome;
-        private $nrIdenficacao;
+        private $cpf;
         private $endereco;
         private $telefone;
         private $email;
@@ -17,7 +17,7 @@
         public function __construct($dados) {
             $this->nome = $dados['nome'] ?? null;
             $this->senha = $dados['senha'] ?? null;
-            $this->nrIdenficacao = $dados['nr_documento'] ?? null;
+            $this->cpf = $dados['nr_documento'] ?? null;
             $this->endereco = $dados['endereco'] ?? null;
             $this->telefone = $dados['telefone'] ?? null;
             $this->email = $dados['email'] ?? null;
@@ -32,8 +32,8 @@
             if (empty($this->nome)){
                 echo "<div id='erro'>Nome obrigatório!<br>";
                 $erro++;
-            } if (empty($this->nrIdenficacao)){
-                echo "<div id='erro'>Número de Identificação obrigatório!<br>";
+            } if (empty($this->cpf)){
+                echo "Número de Identificação obrigatório!<br>";
                 $erro++;
             } if (empty($this->endereco)){
                 echo "<div id='erro'>Endereço obrigatório!</div>";
@@ -75,8 +75,8 @@
             return $this->nome;
         }
 
-        public function getNrIdenficacao() {
-            return $this->nrIdenficacao;
+        public function getCpf() {
+            return $this->cpf;
         }
 
         public function getEndereco() {
@@ -109,9 +109,9 @@
         $organizacaoController = new OrganizaçãoFormController($_POST);
         if ($organizacaoController->validarSeVazio()==0 && $organizacaoController->validarValidade()==0 ){
            
-           require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\models\organizacao.model.php';
-           require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
-           $feedback = $organizacaoController->adicionarResultados();
+           require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\models\organizacao.model.php';
+           require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+           $feedback = $voluntarioController->adicionarResultados();
            
         }
     }

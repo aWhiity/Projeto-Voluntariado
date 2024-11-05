@@ -40,7 +40,7 @@ Como organização, é possível criar pedidos de ajuda e avaliar os voluntário
 
 ## Bugs e Funcionalidades faltantes
 - Listar_organizacao.model e listar_voluntario.model não estão ligados a controller e view.
-- Bugs na visualização e cadastro na homepage das organizações.
+- Bug no pedido de ajuda de voluntariado na homeOrganizacao.
 - Falhas nas avaliações de organizações e voluntários.
 - Página de perfil não implementada.
 - Bugs nas páginas iniciais.

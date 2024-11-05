@@ -26,7 +26,7 @@ class Oportunidade extends Database {
     
     public function editar($objetoOportunidade) {
         try {
-            $query = $this->pdo->prepare("UPDATE oportunidade set id_organizacao = :id_organizacao, titulo = :titulo, descricao = :descricao, data_evento = :data_evento, localizacao = :localizacao, data_edicao = :data_edicao where id = :id");
+            $query = $this->pdo->prepare("UPDATE oportunidade set id_organizacao = :id_organizacao, titulo = :titulo, descricao = :descricao, data_evento = :data_evento, localizacao = :localizacao, data_ultima_modificacao = :data_ultima_modificacao where id = :id");
     
             $query->bindValue(":id", $objetoOportunidade->getId());
             $query->bindValue(":id_organizacao", $objetoOportunidade->getIdOrganizacao());

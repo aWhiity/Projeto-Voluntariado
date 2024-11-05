@@ -1,6 +1,6 @@
 <?php
-    require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\models\oportunidade.php';
-    require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+    require_once '..\models\oportunidade.php';
+    require_once '..\config\database.php';
 
     class ListarOportunidadeController {
         public function listar() {

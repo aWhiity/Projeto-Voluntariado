@@ -12,7 +12,7 @@
     </header>
     <main>
         <?php 
-        require_once 'C:\\xampp\\htdocs\\Projeto-Voluntariado\\src\\controllers\\listar_organizacao.controller.php';
+        require_once '..\\controllers\\listar_organizacao.controller.php';
         $controller = new ListarOrganizacaoController();
         $organizacoes = $controller->listar();
         

@@ -1,12 +1,12 @@
 <?php
 
-require_once(__DIR__ . '/../models/login.model.php');
+require_once(__DIR__ . '/../models/voluntario.model.php');
+require_once(__DIR__ . '/../models/organizacao.model.php');
 
 class LoginController {
     private $loginModel;
 
     public function __construct() {
-        $this->loginModel = new LoginModel();
         $this->verificar();
     }
 
@@ -19,23 +19,32 @@ class LoginController {
     }
 
     private function validarLogin() {
-        $usuario = $_POST['usuario'] ?? '';
+        $email = $_POST['email'] ?? '';
         $senha = $_POST['senha'] ?? '';
         $isVoluntario = isset($_POST['voluntario']);
 
-        if ($this->loginModel->validarUsuario($usuario, $senha)) {
+        if($isVoluntario) {
+            $this->loginModel = new VoluntarioModel();
+        } else {
+            $this->loginModel = new OrganizacaoModel();
+        }
+
+        $userId = $this->loginModel->verificarLogin($email, $senha);
+
+        if ($userId) {
             session_start();
             $_SESSION['logged_in'] = true;
-            $_SESSION['usuario'] = $usuario;
+            $_SESSION['email'] = $email;
+            $_SESSION['user_id'] = $userId;
 
-            // Redireciona com base no tipo de usuário (voluntário ou organização)
             if ($isVoluntario) {
+                $_SESSION['user_type'] = 'voluntario';
                 $this->redirecionar('homePessoa.view.php');
             } else {
+                $_SESSION['user_type'] = 'organizacao';
                 $this->redirecionar('homeOrg.view.php');
             }
         } else {
-            // Se as credenciais forem inválidas, redireciona de volta ao login com mensagem de erro
             $this->redirecionar('login.view.php?error=invalid_credentials');
         }
     }

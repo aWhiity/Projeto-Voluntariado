@@ -1,5 +1,5 @@
 <?php
-require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+require_once '..\config\database.php';
 
 class Oportunidade extends Database {
     
@@ -46,8 +46,8 @@ class Oportunidade extends Database {
         try {
             $query = $this->pdo->prepare("SELECT * from oportunidade");
             $query->execute();
-            $listaVoluntarios = $query->fetchAll(PDO::FETCH_ASSOC);
-            return $listaVoluntarios;
+            $listaOportunidades = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $listaOportunidades;
         } catch (PDOException $e) {
             return 'Error: ' . $e->getMessage();
         }

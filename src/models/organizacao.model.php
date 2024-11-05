@@ -1,6 +1,6 @@
 <?php 
 
-    require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+    require_once '..\config\database.php';
     
 
 
@@ -64,15 +64,16 @@
             }
         }
     
-        public function verificarLoginOrganizacao($email, $senha) {
+        public function verificarLogin($email, $senha) {
             try {
-                $query = $this->pdo->prepare("SELECT * from organizacao where email = :email and senha = :senha");
-                $query->bindValue(":email", $email());
-                $query->bindValue(":senha", $senha());
+                $query = $this->pdo->prepare("SELECT id, email, senha from organizacao where email = :email and senha = :senha");
+                $query->bindValue(":email", $email);
+                $query->bindValue(":senha", $senha);
                 $query->execute();
                 $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
                 if ($resultado) {
-                    return true;
+                    return $resultado['id'];
                 } else {
                     return false;
                 }
@@ -85,8 +86,8 @@
             try {
                 $query = $this->pdo->prepare("SELECT * from organizacao");
                 $query->execute();
-                $listaVoluntarios = $query->fetchAll(PDO::FETCH_ASSOC);
-                return $listaVoluntarios;
+                $listaOrganizacao = $query->fetchAll(PDO::FETCH_ASSOC);
+                return $listaOrganizacao;
             } catch (PDOException $e) {
                 return 'Error: ' . $e->getMessage();
             }

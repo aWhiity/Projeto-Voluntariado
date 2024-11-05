@@ -17,7 +17,7 @@
 
     <main>
         <?php 
-            require_once 'C:\\xampp\\htdocs\\Projeto-Voluntariado\\src\\controllers\\listar_oportunidades.controller.php';
+            require_once '..\\controllers\\listar_oportunidades.controller.php';
             $controller = new ListarOportunidadeController();
             $oportunidades = $controller->listar();
 

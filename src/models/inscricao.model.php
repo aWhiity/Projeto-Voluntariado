@@ -1,7 +1,7 @@
 <?php
-require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+require_once '..\config\database.php';
 
-class Inscricao extends Database {
+class InscricaoModel extends Database {
     
     public function __construct() {
         parent::__construct();
@@ -38,12 +38,34 @@ class Inscricao extends Database {
         }
     }
 
+    public function selecionarPorVoluntario($idVoluntario) {
+        try {
+            $query = $this->pdo->prepare(@"SELECT org.nome, op.titulo, op.descricao, op.localizacao, inscricao.data_criacao 
+                                                from inscricao
+                                                left join oportunidade as op on op.id = inscricao.id_oportunidade
+                                                left join organizacao as org on org.id = op.id_organizacao
+                                                left join voluntario as vol on vol.id = inscricao.id_voluntario
+                                                WHERE
+                                                inscricao.status = 'aprovado' and 
+                                                vol.i = :id_voluntario;"
+                                        );
+
+            $query->bindValue(":id_voluntario", $idVoluntario);
+
+            $query->execute();
+            $listaInscricao = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $listaInscricao;
+        } catch (PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
     public function selecionarTodos() {
         try {
             $query = $this->pdo->prepare("SELECT * from inscricao");
             $query->execute();
-            $listaVoluntarios = $query->fetchAll(PDO::FETCH_ASSOC);
-            return $listaVoluntarios;
+            $listaInscricao = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $listaInscricao;
         } catch (PDOException $e) {
             return 'Error: ' . $e->getMessage();
         }

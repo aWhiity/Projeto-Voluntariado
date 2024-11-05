@@ -12,7 +12,7 @@
 
     <form method="post" action="../controllers/login.controller.php">
         <label>Email: </label>
-        <input type="text" name="usuario" required>
+        <input type="email" name="email" required>
         <label>Senha: </label>
         <input type="password" name="senha" required>
         <br>
@@ -22,10 +22,10 @@
         <button type="submit">Enviar</button>
     </form>
 
-    <p>Não possui uma conta? <a href="../views/register.view.php">Cadastre-se aqui</a></p>
+    <p>Não possui uma conta? <a href="../views/cadastrar_voluntario.view.php">Cadastre-se aqui</a></p>
     
     <?php if (isset($_GET['error'])): ?>
-        <p style="color: red;">Usuário ou senha inválidos!</p>
+        <p style="color: red;">Email ou senha inválidos!</p>
     <?php endif; ?>
 </body>
 </html>

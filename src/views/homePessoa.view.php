@@ -52,10 +52,8 @@
             header("Location: login.view.php");
             exit();
         }
-        include ('../models/homePessoa.model.php');
     ?>
     <div class="container">
-
         <h1>Bem-vindo(a)!</h1>
         <div class="logout-container">
             <form action="../controllers/logout.controller.php" method="post">
@@ -64,25 +62,33 @@
         </div>
         
         <h2>Organizações que você ajudou</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome da Organização</th>
-                    <th>Data de Participação</th>
-                    <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($organizacoes as $org): ?>
+            <table>
+                <thead>
                     <tr>
-                        <td><?= htmlspecialchars($org['nome']) ?></td>
-                        <td><?= htmlspecialchars($org['data_participacao']) ?></td>
-                        <td><button class="button" onclick="contatarOrganizacao('<?= htmlspecialchars($org['nome']) ?>')">Contatar</button></td>
+                        <th>Nome da Organização</th>
+                        <th>Título da Oportunidade</th>
+                        <th>Descrição</th>
+                        <th>Localização</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-                    
+                </thead>
+                <tbody>
+                    <?php if (!empty($inscricoes)): ?>
+                        <?php foreach ($inscricoes as $inscricao): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($inscricao['nome']) ?></td>
+                                <td><?= htmlspecialchars($inscricao['titulo']) ?></td>
+                                <td><?= htmlspecialchars($inscricao['descricao']) ?></td>
+                                <td><?= htmlspecialchars($inscricao['localizacao']) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="4">Você ainda não ajudou nenhuma organização.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+
 
         <div class="rating">
             <h2>Avalie uma Organização</h2>
@@ -90,7 +96,6 @@
             <select id="orgName">
                 <option value="Organização A">Organização A</option>
                 <option value="Organização B">Organização B</option>
-                
             </select>
             <br><br>
 
@@ -117,7 +122,6 @@
             const nomeOrg = document.getElementById('orgName').value;
             const rating = document.getElementById('rating').value;
             alert("Avaliação enviada para " + nomeOrg + " com nota: " + rating);
-            
         }
     </script>
 </body>

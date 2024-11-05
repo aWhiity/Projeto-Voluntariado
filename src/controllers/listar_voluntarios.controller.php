@@ -1,10 +1,10 @@
 <?php
-    require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\models\voluntario.model.php';
-    require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+    require_once '..\models\voluntario.model.php';
+    require_once '..\config\database.php';
 
     class ListarVoluntariosController {
         public function listar() {
-            $voluntarioModel = new Voluntario();
+            $voluntarioModel = new VoluntarioModel();
             $voluntarios = $voluntarioModel->selecionarTodos();
             return $voluntarios ?: [];
         }

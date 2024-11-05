@@ -1,28 +1,26 @@
 <?php 
 
-    require 'D:\xampp\htdocs\Projeto-Voluntariado\src\views\organizacao_form.view.php';
+    require '..\views\organizacao_form.view.php';
     //require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\controllers\organizacao_form.controller.php';
 
     class OrganizacaoFormController {
 
         private $nome;
-        private $cpf;
+        private $cnpj;
         private $endereco;
         private $telefone;
         private $email;
         private $senha;
         private $descricao;
-        private $areaAcao;
 
         public function __construct($dados) {
             $this->nome = $dados['nome'] ?? null;
             $this->senha = $dados['senha'] ?? null;
-            $this->cpf = $dados['nr_documento'] ?? null;
+            $this->cnpj = $dados['cnpj'] ?? null;
             $this->endereco = $dados['endereco'] ?? null;
             $this->telefone = $dados['telefone'] ?? null;
             $this->email = $dados['email'] ?? null;
             $this->descricao = $dados['descricao'] ?? null;
-            $this->areaAcao = $dados['areaAcao'] ?? null;
         }
          
         public function validarSeVazio() : int {
@@ -32,8 +30,8 @@
             if (empty($this->nome)){
                 echo "<div id='erro'>Nome obrigatório!<br>";
                 $erro++;
-            } if (empty($this->cpf)){
-                echo "Número de Identificação obrigatório!<br>";
+            } if (empty($this->cnpj)){
+                echo "Cnpj obrigatório!<br>";
                 $erro++;
             } if (empty($this->endereco)){
                 echo "<div id='erro'>Endereço obrigatório!</div>";
@@ -76,7 +74,7 @@
         }
 
         public function getCpf() {
-            return $this->cpf;
+            return $this->cnpj;
         }
 
         public function getEndereco() {
@@ -99,18 +97,14 @@
             return $this->descricao;
         }
 
-        public function getAreaAcao() {
-            return $this->areaAcao;
-        }
-
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $organizacaoController = new OrganizacaoFormController($_POST);
         if ($organizacaoController->validarSeVazio()==0 && $organizacaoController->validarValidade()==0 ){
            
-           require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\models\organizacao.model.php';
-           require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+           require_once '..\models\organizacao.model.php';
+           require_once '..\config\database.php';
            $feedback = $voluntarioController->adicionarResultados();
            
         }

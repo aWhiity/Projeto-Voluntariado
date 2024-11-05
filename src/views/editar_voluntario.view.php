@@ -13,7 +13,7 @@
         require_once 'D:\\xampp\\htdocs\\Projeto-Voluntariado\\src\\models\\voluntario.model.php';
 
         $id = $_GET['id'] ?? null;
-        $voluntarioModel = new Voluntario();
+        $voluntarioModel = new VoluntarioModel();
         $voluntario = $voluntarioModel->selecionarPorId($id);
 
         if (!$voluntario) {
@@ -28,7 +28,7 @@
         ?>
 
         <form action="/Projeto-Voluntariado/src/controllers/editar_voluntario.controller.php" method="POST">
-            <input type="text" name="id" value="<?= $id ?>">
+            <input type="hidden" name="id" value="<?= $id ?>">
 
             <label>Nome: </label> 
             <input type="text" name="nome" value="<?= htmlspecialchars($nome) ?>"> <br>

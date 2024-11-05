@@ -1,6 +1,6 @@
 <?php 
 
-require 'D:\xampp\htdocs\Projeto-Voluntariado\src\views\cadastrar_voluntario.view.php';
+require '..\views\cadastrar_voluntario.view.php';
 
 class VoluntarioFormController {
 
@@ -46,7 +46,7 @@ class VoluntarioFormController {
     }
 
     public function adicionarResultados(){
-        $model = new Voluntario();
+        $model = new VoluntarioModel();
         return $model->cadastrar($this);
     }
 
@@ -74,8 +74,8 @@ class VoluntarioFormController {
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $voluntarioController = new VoluntarioFormController($_POST);
     if ($voluntarioController->validarResultados() == 0){
-        require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\models\voluntario.model.php';
-        require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+        require_once '..\models\voluntario.model.php';
+        require_once '..\src\config\database.php';
         $feedback = $voluntarioController->adicionarResultados();
         echo $feedback;
     }

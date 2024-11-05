@@ -22,13 +22,7 @@
             <label>Telefone: </label> <input type="text" name="telefone" value =<?= $telefone ?? '' ?> > <br>
             <label>Email: </label> <input type="text" name="email" value =<?= $email ?? '' ?> > <br>
             <label>Senha: </label> <input type="text" name="senha" value =<?= $senha ?? '' ?> > <br>
-            <label>Descrição: </label> <input type="text" name="descricao" value =<?= $descricao ?? '' ?> > <br>
-            <label for="areaAcao">Área de ação: </label> <select id="areaAcao" name="areaAcao" >
-                <option value="">Selecione um tipo de ação</option>
-                <option value="educacao">Educação</option>
-                <option value="saude">Saúde</option>
-                <option value="meio_ambiente">Educação</option>
-            </select>
+            <label>Descrição: </label> <input type="text" name="descricao" value =<?= $descricao ?? '' ?> > 
 
             <button>Enviar</button>
         </form>

@@ -1,6 +1,6 @@
 <?php
-require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\models\voluntario.model.php';
-require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+require_once '..\models\voluntario.model.php';
+require_once '..\config\database.php';
 
 class EditarVoluntarioController {
     private $nome;
@@ -61,7 +61,7 @@ class EditarVoluntarioController {
     }
 
     public function editarVoluntario() {
-        $voluntarioModel = new Voluntario();
+        $voluntarioModel = new VoluntarioModel();
 
         if ($this->validarResultados() == 0) {
             $resultado = $voluntarioModel->editar($this);

@@ -1,7 +1,7 @@
 <?php
-require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+require_once '..\config\database.php';
 
-class Voluntario extends Database {
+class VoluntarioModel extends Database {
     
     public function __construct() {
         parent::__construct();
@@ -54,15 +54,15 @@ class Voluntario extends Database {
         }
     }
 
-    public function verificarLoginVoluntario($email, $senha) {
+    public function verificarLogin($email, $senha) {
         try {
-            $query = $this->pdo->prepare("SELECT * from voluntario where email = :email and senha = :senha");
+            $query = $this->pdo->prepare("SELECT id, email, senha from voluntario where email = :email and senha = :senha");
             $query->bindValue(":email", $email);
             $query->bindValue(":senha", $senha);
             $query->execute();
             $resultado = $query->fetch(PDO::FETCH_ASSOC);
             if ($resultado) {
-                return true;
+                return $resultado['id'];
             } else {
                 return false;
             }

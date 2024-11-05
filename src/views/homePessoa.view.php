@@ -39,6 +39,10 @@
         .rating {
             margin-top: 20px;
         }
+        .logout-container {
+            text-align: right;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -48,13 +52,16 @@
             header("Location: login.view.php");
             exit();
         }
-    
+        include ('../models/homePessoa.model.php');
     ?>
     <div class="container">
-         
-        <?php include('../models/homePessoa.model.php')?>
 
         <h1>Bem-vindo(a)!</h1>
+        <div class="logout-container">
+            <form action="../controllers/logout.controller.php" method="post">
+                <button type="submit" class="button" style="background-color: red;">Sair</button>
+            </form>
+        </div>
         
         <h2>Organizações que você ajudou</h2>
         <table>
@@ -75,6 +82,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+                    
 
         <div class="rating">
             <h2>Avalie uma Organização</h2>

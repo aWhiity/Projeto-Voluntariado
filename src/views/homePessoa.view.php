@@ -62,32 +62,36 @@
         </div>
         
         <h2>Organizações que você ajudou</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome da Organização</th>
-                        <th>Título da Oportunidade</th>
-                        <th>Descrição</th>
-                        <th>Localização</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (!empty($inscricoes)): ?>
-                        <?php foreach ($inscricoes as $inscricao): ?>
-                            <tr>
-                                <td><?= htmlspecialchars($inscricao['nome']) ?></td>
-                                <td><?= htmlspecialchars($inscricao['titulo']) ?></td>
-                                <td><?= htmlspecialchars($inscricao['descricao']) ?></td>
-                                <td><?= htmlspecialchars($inscricao['localizacao']) ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="4">Você ainda não ajudou nenhuma organização.</td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+           
+                    <?php
+                        require_once '..\\controllers\\home_voluntario.controller.php';
+
+                        $controller = new HomeVoluntarioController();
+                        $inscricoes = $controller->listar();
+
+                        if (empty($inscricoes)) {
+                            echo "<p>Você ainda não ajudou nenhuma organização.</p>";
+                        } else {
+                            echo "<table>";
+                            echo "<thead>";
+                            echo "<tr><th>Nome</th><th>Titulo</th><th>Descricao</th><th>Localizacao</th><th>Data</th>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                            
+                            foreach ($inscricoes as $inscricao) {
+                                echo "<tr>";
+                                echo "<td>{$inscricao['nome']}</td>";
+                                echo "<td>{$inscricao['titulo']}</td>";
+                                echo "<td>{$inscricao['descricao']}</td>";
+                                echo "<td>{$inscricao['localizacao']}</td>";
+                                echo "<td>{$inscricao['data_criacao']}</td>";
+                                echo "</tr>";
+                            }
+                            
+                            echo "</tbody>";
+                            echo "</table>";
+                        }
+                    ?>
 
 
         <div class="rating">

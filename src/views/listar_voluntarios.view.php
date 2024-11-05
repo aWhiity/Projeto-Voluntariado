@@ -15,9 +15,9 @@
         require_once '..\\controllers\\listar_voluntarios.controller.php';
 
         $controller = new ListarVoluntariosController();
-        $voluntarios = $controller->listar();
+        $inscricoes = $controller->listar();
 
-        if (empty($voluntarios)) {
+        if (empty($inscricoes)) {
             echo "<p>Nenhum voluntário cadastrado.</p>";
         } else {
             echo "<table>";
@@ -26,15 +26,15 @@
             echo "</thead>";
             echo "<tbody>";
             
-            foreach ($voluntarios as $voluntario) {
+            foreach ($inscricoes as $inscricao) {
                 echo "<tr>";
-                echo "<td>{$voluntario['id']}</td>";
-                echo "<td>{$voluntario['nome']}</td>";
-                echo "<td>{$voluntario['cpf']}</td>";
-                echo "<td>{$voluntario['telefone']}</td>";
-                echo "<td>{$voluntario['email']}</td>";
-                echo "<td>{$voluntario['data_criacao']}</td>";
-                echo "<td><a href='editar_voluntario.view.php?id={$voluntario['id']}'>Editar</a></td>";
+                echo "<td>{$inscricao['id']}</td>";
+                echo "<td>{$inscricao['nome']}</td>";
+                echo "<td>{$inscricao['cpf']}</td>";
+                echo "<td>{$inscricao['telefone']}</td>";
+                echo "<td>{$inscricao['email']}</td>";
+                echo "<td>{$inscricao['data_criacao']}</td>";
+                echo "<td><a href='editar_voluntario.view.php?id={$inscricao['id']}'>Editar</a></td>";
                 echo "</tr>";
             }
             

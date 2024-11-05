@@ -14,17 +14,17 @@
 
         $id = $_GET['id'] ?? null;
         $voluntarioModel = new VoluntarioModel();
-        $voluntario = $voluntarioModel->selecionarPorId($id);
+        $inscricao = $voluntarioModel->selecionarPorId($id);
 
-        if (!$voluntario) {
+        if (!$inscricao) {
             echo "<p>Voluntário não encontrado.</p>";
             exit;
         }
 
-        $nome = $voluntario['nome'];
-        $cpf = $voluntario['cpf'];
-        $telefone = $voluntario['telefone'];
-        $email = $voluntario['email'];
+        $nome = $inscricao['nome'];
+        $cpf = $inscricao['cpf'];
+        $telefone = $inscricao['telefone'];
+        $email = $inscricao['email'];
         ?>
 
         <form action="/Projeto-Voluntariado/src/controllers/editar_voluntario.controller.php" method="POST">

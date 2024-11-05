@@ -2,7 +2,7 @@
 
 require '..\views\cadastrar_voluntario.view.php';
 
-class VoluntarioFormController {
+class OportunidadeFormController {
 
     private $nome;
     private $cpf;
@@ -72,10 +72,10 @@ class VoluntarioFormController {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $voluntarioController = new VoluntarioFormController($_POST);
+    $voluntarioController = new OportunidadeFormController($_POST);
     if ($voluntarioController->validarResultados() == 0){
         require_once '..\models\voluntario.model.php';
-        require_once '..\src\config\database.php';
+        require_once '..\config\database.php';
         $feedback = $voluntarioController->adicionarResultados();
         echo $feedback;
     }

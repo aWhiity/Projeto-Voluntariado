@@ -40,14 +40,14 @@ class InscricaoModel extends Database {
 
     public function selecionarPorVoluntario($idVoluntario) {
         try {
-            $query = $this->pdo->prepare(@"SELECT org.nome, op.titulo, op.descricao, op.localizacao, inscricao.data_criacao 
+            $query = $this->pdo->prepare("SELECT org.nome, op.titulo, op.descricao, op.localizacao, inscricao.data_criacao 
                                                 from inscricao
                                                 left join oportunidade as op on op.id = inscricao.id_oportunidade
                                                 left join organizacao as org on org.id = op.id_organizacao
                                                 left join voluntario as vol on vol.id = inscricao.id_voluntario
                                                 WHERE
                                                 inscricao.status = 'aprovado' and 
-                                                vol.i = :id_voluntario;"
+                                                vol.id = :id_voluntario;"
                                         );
 
             $query->bindValue(":id_voluntario", $idVoluntario);

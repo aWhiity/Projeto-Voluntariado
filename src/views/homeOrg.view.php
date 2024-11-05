@@ -53,7 +53,7 @@
             exit();
         }
 
-        include('../models/homeOrg.model.php');
+        include('../models/organizacao.model.php');
     ?>
 
     <div class="container">
@@ -76,33 +76,22 @@
                         <th>Ação</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php foreach ($pedidos as $pedido): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($pedido['descricao']) ?></td>
-                            <td><?= htmlspecialchars($pedido['status']) ?></td>
-                            <td><?= htmlspecialchars($pedido['data_limite']) ?></td>
-                            <td><button class="button">Visualizar</button></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
             </table>
         </div>
 
         <div class="section">
             <h2>Pedir Ajuda</h2>
-            <form action="../controllers/novoPedido.controller.php" method="post">
-                <label>Descrição:</label>
-                <textarea name="descricao" required></textarea>
-                
-                <label>Data Limite:</label>
-                <input type="date" name="data_limite">
+            <main>
+                <form action="../controllers/cadastrar_oportunidade.controller.php" method="POST">
 
-                <label>Requisitos:</label>
-                <textarea name="requisitos" required></textarea>
-                
-                <button type="submit" class="button">Enviar Pedido</button>
-            </form>
+                <label>Titulo: </label> <input type="text" name="titulo" value =<?= $titulo ?? '' ?> > <br>
+                <label>Descrição: </label> <input type="text" name="descricao" value =<?= $descricao ?? '' ?> > <br>
+                <label>Data do Evento: </label> <input type="text" name="data" value =<?= $data ?? '' ?> > <br>
+                <label>Localização: </label> <input type="text" name="local" value =<?= $local ?? '' ?> > <br>
+
+                <button>Enviar</button>
+                </form>
+            </main>
         </div>
 
         <div class="section">

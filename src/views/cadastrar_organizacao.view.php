@@ -14,7 +14,7 @@
 <body>
     <header><h1>Cadastro de Organização</h1></header>
     <main>
-        <form action="/Projeto-Voluntariado/src/controllers/organizacao_form.controller.php" method="POST">
+        <form action="/Projeto-Voluntariado/src/controllers/cadastrar_organizacao.controller.php" method="POST">
 
             <label>Nome: </label> <input type="text" name="nome" value =<?= $nome ?? '' ?> > <br>
             <label>CPF/CNPJ: </label> <input type="text" name="nr_documento" value =<?= $cpf ?? '' ?> > <br>

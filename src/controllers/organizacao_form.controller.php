@@ -3,7 +3,7 @@
     require 'D:\xampp\htdocs\Projeto-Voluntariado\src\views\organizacao_form.view.php';
     //require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\controllers\organizacao_form.controller.php';
 
-    class VoluntarioFormController {
+    class OrganizacaoFormController {
 
         private $nome;
         private $cpf;
@@ -67,7 +67,7 @@
         public function adicionarResultados(){
             
             $model = new OrganizacaoModel();
-            $model->adicionarDadosFormulario($this);
+            $model->cadastrar($this);
         
         }
 
@@ -106,7 +106,7 @@
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $organizacaoController = new OrganizaçãoFormController($_POST);
+        $organizacaoController = new OrganizacaoFormController($_POST);
         if ($organizacaoController->validarSeVazio()==0 && $organizacaoController->validarValidade()==0 ){
            
            require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\models\organizacao.model.php';

@@ -1,5 +1,5 @@
 <?php
-require_once 'D:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
+require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\config\database.php';
 
 class Voluntario extends Database {
     

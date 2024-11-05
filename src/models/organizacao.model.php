@@ -83,7 +83,7 @@
     
         public function selecionarTodos() {
             try {
-                $query = $this->pdo->prepare("SELECT * from voluntario");
+                $query = $this->pdo->prepare("SELECT * from organizacao");
                 $query->execute();
                 $listaVoluntarios = $query->fetchAll(PDO::FETCH_ASSOC);
                 return $listaVoluntarios;

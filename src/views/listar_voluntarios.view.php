@@ -12,7 +12,7 @@
     <header><h1>Lista de Voluntários</h1></header>
     <main>
         <?php
-        require_once 'D:\\xampp\\htdocs\\Projeto-Voluntariado\\src\\controllers\\listar_voluntarios.controller.php';
+        require_once 'C:\\xampp\\htdocs\\Projeto-Voluntariado\\src\\controllers\\listar_voluntarios.controller.php';
 
         $controller = new ListarVoluntariosController();
         $voluntarios = $controller->listar();

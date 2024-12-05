@@ -1,7 +1,4 @@
 <?php
-
-    echo "111";
-
     class Database {
 
         protected $pdo; 

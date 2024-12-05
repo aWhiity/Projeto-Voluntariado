@@ -7,9 +7,10 @@
 </head>
 <body>
     <?php
-        
-        require('../src/controllers/index.controller.php');
+
+        require '../vendor/autoload.php';
         $indexController = new IndexController();
+        
     ?>
 </body>
 </html>

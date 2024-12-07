@@ -13,5 +13,6 @@
         <button>Enviar</button>
     </form>
 </main>
-</body>
-</html>
+<?php
+    include '../footer.php';
+?>

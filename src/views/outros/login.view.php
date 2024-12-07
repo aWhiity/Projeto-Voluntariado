@@ -10,7 +10,7 @@
 <body>
     <h1>Login</h1>
 
-    <form method="post" action="../controllers/login.controller.php">
+    <form method="post" action=".//">
         <label>Email: </label>
         <input type="email" name="email" required>
         <label>Senha: </label>

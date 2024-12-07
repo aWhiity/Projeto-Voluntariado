@@ -9,7 +9,26 @@
     <?php
 
         require '../vendor/autoload.php';
-        $indexController = new IndexController();
+
+        use Pecee\SimpleRouter\SimpleRouter;
+
+        // Define o prefixo para as rotas
+        SimpleRouter::group(['prefix' => '/Projeto-Voluntariado/src'], function () {
+            SimpleRouter::get('/', 'LoginController@verificar');
+            SimpleRouter::post('/','LoginController@validarLogin');
+
+            SimpleRouter::get('/home-pessoa','HomeVoluntarioController@index');
+            
+            /*SimpleRouter::get('/home-pessoa', function() {
+                echo '<h1>Pong</h1>';
+            });*/
+
+            /*SimpleRouter::get('/home-pessoa', function() {
+                require '../views/homePessoa.view.php';
+            });*/
+        });
+
+        SimpleRouter::start();
         
     ?>
 </body>

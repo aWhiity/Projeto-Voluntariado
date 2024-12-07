@@ -1,9 +1,5 @@
 <?php 
 
-    require_once '..\config\database.php';
-    
-
-
     class OrganizacaoModel extends Database {
 
 
@@ -64,6 +60,18 @@
             }
         }
     
+        public function selecionarPorId($id) {
+            try {
+                $query = $this->pdo->prepare("SELECT * from organizacao where id = :id");
+        
+                $query->bindValue(":id", $id);
+                $query->execute();
+                return $query->fetch(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                return 'Error: ' . $e->getMessage();
+            }
+        }
+
         public function verificarLogin($email, $senha) {
             try {
                 $query = $this->pdo->prepare("SELECT id, email, senha from organizacao where email = :email and senha = :senha");

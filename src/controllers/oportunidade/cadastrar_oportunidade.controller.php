@@ -2,7 +2,7 @@
 
 require '..\views\HomeOrg.view.php';
 
-class VoluntarioFormController {
+class OportunidadeFormController {
 
     private $idOrganizacao;
     private $titulo;
@@ -67,7 +67,7 @@ class VoluntarioFormController {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $voluntarioController = new VoluntarioFormController($_POST);
+    $voluntarioController = new OportunidadeFormController($_POST);
     if ($voluntarioController->validarResultados() == 0){
         require_once '..\models\oportunidade.model.php';
         require_once '..\config\database.php';

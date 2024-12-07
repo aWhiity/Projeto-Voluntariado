@@ -18,6 +18,12 @@
             SimpleRouter::post('/','LoginController@validarLogin');
 
             SimpleRouter::get('/home-pessoa','HomeVoluntarioController@index');
+            SimpleRouter::get('/home-','HomeVoluntarioController@index');
+
+            
+            SimpleRouter::get('/home-organizacao','HomeOrganizacaoController@index');
+            SimpleRouter::get('/home-o','HomeOrganizacaoController@index');
+
             
             /*SimpleRouter::get('/home-pessoa', function() {
                 echo '<h1>Pong</h1>';

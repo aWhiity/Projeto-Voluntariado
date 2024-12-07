@@ -20,7 +20,6 @@
         <h2>Organizações que você ajudou</h2>
            
                     <?php
-                        require_once '..\\controllers\\home_voluntario.controller.php';
 
                         $controller = new HomeVoluntarioController();
                         $inscricoes = $controller->listar();

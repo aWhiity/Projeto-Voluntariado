@@ -10,11 +10,13 @@ class IndexController {
         session_start();
         
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-            $this->redirecionar('homePessoa.view.php');
+            //$this->redirecionar('homePessoa.view.php');
+            header('Location: /home');
         } else {
-            $this->redirecionar('login.view.php');
+            //$this->redirecionar('login.view.php');
+            header('Location: /login');
         }
-    }
+    }       
 
     private function redirecionar($view) {
         header("Location: ../src/views/$view");

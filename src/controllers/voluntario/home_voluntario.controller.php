@@ -1,10 +1,13 @@
 <?php
 
-require_once(__DIR__ . '/../models/inscricao.model.php');
-require_once(__DIR__ . '/../models/organizacao.model.php');
-require_once '..\config\database.php';
-
 class HomeVoluntarioController {
+
+    public function index() {
+        require '.\views\voluntario\inicial_voluntario.view.php';
+        exit();
+    }
+    
+    
 
     public function listar() {
         $voluntarioId = $_SESSION['user_id']; 
@@ -16,5 +19,3 @@ class HomeVoluntarioController {
 
 }
 
-$controller = new HomeVoluntarioController();
-$controller->listar();

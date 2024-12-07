@@ -14,12 +14,21 @@
 
         // Define o prefixo para as rotas
         SimpleRouter::group(['prefix' => '/Projeto-Voluntariado/src'], function () {
+            //login
             SimpleRouter::get('/', 'LoginController@verificar');
             SimpleRouter::post('/','LoginController@validarLogin');
-
+            //home pessoa
             SimpleRouter::get('/home-pessoa','HomeVoluntarioController@index');
+            //cadastro de voluntario
+            SimpleRouter::get('/cadastro-voluntario','VoluntarioFormController@index');   
+            SimpleRouter::post('/cadastro-voluntario','VoluntarioFormController@construtor');
+            //cadastro de organizaçao
+            SimpleRouter::get('/cadastro-organizacao','OrganizacaoFormController@index');
+            SimpleRouter::post('/cadastro-organizacao','OrganizacaoFormController@construtor');
+
+
             
-            /*SimpleRouter::get('/home-pessoa', function() {
+            /*SimpleRouter::get('/cadastro-voluntario', function() {
                 echo '<h1>Pong</h1>';
             });*/
 

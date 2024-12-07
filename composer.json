@@ -1,15 +1,10 @@
 {
-    "name": "luizh/projeto-voluntariado",
+    "name": "bwosi/projeto-voluntariado",
     "authors": [
         {
-            "name": "Luiz Felipe Hildebrant",
-            "email": "luizhildebrant@gmail.com"
+            "name": "barbarahw",
+            "email": "127110674+barbarahw@users.noreply.github.com"
         }
     ],
-    "autoload": {
-        "classmap": ["./"]
-    },
-    "require": {
-        "pecee/simple-router": "^5.4"
-    }
+    "require": {}
 }

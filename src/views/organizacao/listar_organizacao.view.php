@@ -1,6 +1,6 @@
 <?php
     $titulo = "Lista de Organizações";
-    include '../header.php';
+    include './views/header.php';
 ?>
 <main>
     <?php 
@@ -73,5 +73,5 @@
     </table>
 </main>
 <?php
-    include '../footer.php';
+    include './views/footer.php';
 ?>

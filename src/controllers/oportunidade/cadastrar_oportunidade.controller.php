@@ -1,5 +1,7 @@
 <?php 
 
+require '..\views\HomeOrg.view.php';
+
 class OportunidadeFormController {
 
     private $idOrganizacao;

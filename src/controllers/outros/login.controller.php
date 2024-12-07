@@ -41,7 +41,7 @@ class LoginController {
                 SimpleRouter::response()->redirect('/Projeto-Voluntariado/src/home-pessoa');
             } else {
                 $_SESSION['user_type'] = 'organizacao';
-                SimpleRouter::response()->redirect('/home-organizacao');
+                SimpleRouter::response()->redirect('/Projeto-Voluntariado/src/home-organizacao');
             }
         } else {
             SimpleRouter::response()->redirect('/?error=invalid_credentials');

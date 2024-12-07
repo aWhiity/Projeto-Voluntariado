@@ -1,6 +1,6 @@
 <?php
     $titulo = "Menu Inicial";
-    include '../header.php';
+    include './views/header.php';
 ?>
     <?php 
         session_start();
@@ -82,5 +82,5 @@
         }
     </script>
 <?php
-    include '../footer.php';
+    include './views/footer.php';
 ?>

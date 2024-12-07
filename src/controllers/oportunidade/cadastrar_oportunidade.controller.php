@@ -1,8 +1,6 @@
 <?php 
 
-require '..\views\HomeOrg.view.php';
-
-class VoluntarioFormController {
+class OportunidadeFormController {
 
     private $idOrganizacao;
     private $titulo;
@@ -11,7 +9,7 @@ class VoluntarioFormController {
     private $local;
 
 
-    public function __construct($dados) {
+    public function __construc() {
         $this->idOrganizacao = $_SESSION['user_id']; 
         $this->titulo = $dados['titulo'] ?? null;
         $this->descricao = $dados['descricao'] ?? null;
@@ -67,11 +65,11 @@ class VoluntarioFormController {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $voluntarioController = new VoluntarioFormController($_POST);
-    if ($voluntarioController->validarResultados() == 0){
+    $oportunidadeController = new OportunidadeFormController($_POST);
+    if ($oportunidadeController->validarResultados() == 0){
         require_once '..\models\oportunidade.model.php';
         require_once '..\config\database.php';
-        $feedback = $voluntarioController->adicionarResultados();
+        $feedback = $oportunidadeController->adicionarResultados();
         echo $feedback;
     }
 }

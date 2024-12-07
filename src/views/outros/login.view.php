@@ -11,12 +11,12 @@
         <button type="submit">Enviar</button>
     </form>
 
-        <p>Não possui uma conta? <a href="../views/cadastrar_voluntario.view.php">Cadastre-se aqui</a></p>
+        <p>Não possui uma conta? <a href="/Projeto-Voluntariado/src/cadastro-voluntario">Cadastre-se aqui</a></p>
         
         <?php if (isset($_GET['error'])): ?>
             <p style="color: red;">Email ou senha inválidos!</p>
         <?php endif; ?>
     </main>
 <?php
-    include '../footer.php';
+    include '.\views\footer.php';
 ?>

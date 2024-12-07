@@ -3,7 +3,7 @@
     include '../header.php';
 ?>
 <main>
-    <form action="/Projeto-Voluntariado/src/controllers/cadastrar_voluntario.controller.php" method="POST">
+    <form action="./cadastro-voluntario" method="POST">
 
         <label>Nome: </label> <input type="text" name="nome" value =<?= $nome ?? '' ?> > <br>
         <label>CPF/CNPJ: </label> <input type="text" name="cpf" value =<?= $cpf ?? '' ?> > <br>

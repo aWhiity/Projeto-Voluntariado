@@ -1,7 +1,5 @@
 <?php 
 
-require '..\views\cadastrar_voluntario.view.php';
-
 class VoluntarioFormController {
 
     private $nome;
@@ -11,12 +9,22 @@ class VoluntarioFormController {
     private $senha;
 
 
-    public function __construct($dados) {
-        $this->nome = $dados['nome'] ?? null;
-        $this->cpf = $dados['cpf'] ?? null;
-        $this->telefone = $dados['telefone'] ?? null;
-        $this->email = $dados['email'] ?? null;
-        $this->senha = $dados['senha'] ?? null;
+    public function index() {
+        require './views/voluntario/cadastrar_voluntario.view.php';
+        exit();
+    }
+
+    public function construtor() {
+        $this->nome = $_POST['nome'] ?? null;
+        $this->cpf = $_POST['cpf'] ?? null;
+        $this->telefone = $_POST['telefone'] ?? null;
+        $this->email = $_POST['email'] ?? null;
+        $this->senha = $_POST['senha'] ?? null;
+
+        if ($this->validarResultados() === 0) {
+            $feedback = $this->adicionarResultados();
+            echo $feedback;
+        }
     }
      
     public function validarResultados() {
@@ -69,15 +77,8 @@ class VoluntarioFormController {
     public function getSenha() {
         return $this->senha;
     }
-}
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $voluntarioController = new VoluntarioFormController($_POST);
-    if ($voluntarioController->validarResultados() == 0){
-        require_once '..\models\voluntario.model.php';
-        require_once '..\config\database.php';
-        $feedback = $voluntarioController->adicionarResultados();
-        echo $feedback;
-    }
+    
 }
+        
 ?>

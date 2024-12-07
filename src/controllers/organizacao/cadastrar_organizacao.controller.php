@@ -1,8 +1,5 @@
 <?php 
 
-    require '..\views\organizacao_form.view.php';
-    //require_once 'C:\xampp\htdocs\Projeto-Voluntariado\src\controllers\organizacao_form.controller.php';
-
     class OrganizacaoFormController {
 
         private $nome;
@@ -13,14 +10,26 @@
         private $senha;
         private $descricao;
 
-        public function __construct($dados) {
-            $this->nome = $dados['nome'] ?? null;
-            $this->senha = $dados['senha'] ?? null;
-            $this->cnpj = $dados['cnpj'] ?? null;
-            $this->endereco = $dados['endereco'] ?? null;
-            $this->telefone = $dados['telefone'] ?? null;
-            $this->email = $dados['email'] ?? null;
-            $this->descricao = $dados['descricao'] ?? null;
+        public function index() {
+            require './views/organizacao/cadastrar_organizacao.view.php';
+            exit();
+        }
+
+        public function construtor() {
+            $this->nome = $_POST['nome'] ?? null;
+            $this->senha = $_POST['senha'] ?? null;
+            $this->cnpj = $_POST['cnpj'] ?? null;
+            $this->endereco = $_POST['endereco'] ?? null;
+            $this->telefone = $_POST['telefone'] ?? null;
+            $this->email = $_POST['email'] ?? null;
+            $this->descricao = $_POST['descricao'] ?? null;
+
+            
+            if ($this->validarSeVazio()==0 && $this->validarValidade()==0 ){
+           
+                $feedback = $this->adicionarResultados(); 
+                echo $feedback;                   
+            }    
         }
          
         public function validarSeVazio() : int {
@@ -65,7 +74,7 @@
         public function adicionarResultados(){
             
             $model = new OrganizacaoModel();
-            $model->cadastrar($this);
+            return $model->cadastrar($this);
         
         }
 
@@ -73,7 +82,7 @@
             return $this->nome;
         }
 
-        public function getCpf() {
+        public function getCnpj() {
             return $this->cnpj;
         }
 
@@ -99,15 +108,6 @@
 
     }
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $organizacaoController = new OrganizacaoFormController($_POST);
-        if ($organizacaoController->validarSeVazio()==0 && $organizacaoController->validarValidade()==0 ){
-           
-           require_once '..\models\organizacao.model.php';
-           require_once '..\config\database.php';
-           $feedback = $voluntarioController->adicionarResultados();
-           
-        }
-    }
+   
     
     ?>

@@ -4,10 +4,10 @@
 ?>
 
 <main>
-    <form action="/Projeto-Voluntariado/src/controllers/cadastrar_organizacao.controller.php" method="POST">
+    <form action="./cadastro-organizacao" method="POST">
 
         <label>Nome: </label> <input type="text" name="nome" value =<?= $nome ?? '' ?> > <br>
-        <label>CPF/CNPJ: </label> <input type="text" name="nr_documento" value =<?= $cpf ?? '' ?> > <br>
+        <label>CPF/CNPJ: </label> <input type="text" name="cnpj" value =<?= $cpf ?? '' ?> > <br>
         <label>Endereço: </label> <input type="text" name="endereco" value =<?= $endereco ?? '' ?> > <br>
         <label>Telefone: </label> <input type="text" name="telefone" value =<?= $telefone ?? '' ?> > <br>
         <label>Email: </label> <input type="text" name="email" value =<?= $email ?? '' ?> > <br>

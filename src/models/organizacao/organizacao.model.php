@@ -1,9 +1,5 @@
 <?php 
 
-    require_once '..\config\database.php';
-    
-
-
     class OrganizacaoModel extends Database {
 
 
@@ -23,14 +19,13 @@
                 echo "Erro ao acessar o PDO.";
             }
         }
-        //, email, senha, data_criacao
-         //, :email, :senha, :data_criacao
+      
          public function cadastrar($objetoOrganizacao) {
             try {
-                $query = $this->pdo->prepare("INSERT INTO organizacao (nome, cnpj, telefone, endereco, email, senha, descricao, data_criacao) VALUES (:nome, :cnpj, :telefone, :endereco, :email, :senha, descricao, :data_criacao)");
+                $query = $this->pdo->prepare("INSERT INTO organizacao (nome, cnpj, telefone, endereco, email, senha, descricao, data_criacao) VALUES (:nome, :cnpj, :telefone, :endereco, :email, :senha, :descricao, :data_criacao)");
         
                 $query->bindValue(":nome", $objetoOrganizacao->getNome());
-                $query->bindValue(":cpf", $objetoOrganizacao->getCnpj());
+                $query->bindValue(":cnpj", $objetoOrganizacao->getCnpj());
                 $query->bindValue(":telefone", $objetoOrganizacao->getTelefone());
                 $query->bindValue(":endereco", $objetoOrganizacao->getEndereco());
                 $query->bindValue(":email", $objetoOrganizacao->getEmail());
@@ -50,7 +45,7 @@
         
                 $query->bindValue(":id", $objetoOrganizacao->getId());
                 $query->bindValue(":nome", $objetoOrganizacao->getNome());
-                $query->bindValue(":cpf", $objetoOrganizacao->getCnpj());
+                $query->bindValue(":cnpj", $objetoOrganizacao->getCnpj());
                 $query->bindValue(":telefone", $objetoOrganizacao->getTelefone());
                 $query->bindValue(":endereco", $objetoOrganizacao->getEndereco());
                 $query->bindValue(":email", $objetoOrganizacao->getEmail());

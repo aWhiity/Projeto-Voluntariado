@@ -1,5 +1,5 @@
 <?php
-    $titulo = "Cadastrar Voluntario";
+    $titulo = "Editar Voluntario";
     include '../header.php';
 ?>
 <main>
@@ -39,5 +39,6 @@
         <button type="submit">Salvar Alterações</button>
     </form>
 </main>
-</body>
-</html>
+<?php
+    include '../footer.php';
+?>

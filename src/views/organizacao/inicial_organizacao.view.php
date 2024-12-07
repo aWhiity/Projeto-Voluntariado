@@ -1,51 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Organização</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
-    <style>
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-        }
-        .button {
-            padding: 8px 16px;
-            font-size: 1em;
-            cursor: pointer;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            text-align: center;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-        .logout-container {
-            text-align: right;
-            margin-top: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        .section {
-            margin-top: 30px;
-        }
-    </style>
-</head>
-<body>
+<?php
+    $titulo = "Menu Inicial";
+    include '../header.php';
+?>
     <?php 
         session_start();
         if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
@@ -125,5 +81,6 @@
             alert("Avaliação enviada para " + volunteerName + " com nota: " + rating);
         }
     </script>
-</body>
-</html>
+<?php
+    include '../footer.php';
+?>

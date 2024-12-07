@@ -1,5 +1,5 @@
 <?php
-    $titulo = "Cadastrar Voluntario";
+    $titulo = "Cadastrar Organização";
     include '../header.php';
 ?>
 
@@ -17,5 +17,6 @@
         <button>Enviar</button>
     </form>
 </main>
-</body>
-</html>
+<?php
+    include '../footer.php';
+?>

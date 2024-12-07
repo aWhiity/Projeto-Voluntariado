@@ -1,6 +1,6 @@
 
 <?php
-    $titulo = "Cadastrar Voluntario";
+    $titulo = "Lista de Oportunidades";
     include '../header.php';
 ?>
 <main>
@@ -30,5 +30,6 @@
         ?>
     
 </main>
-</body>
-</html>
+<?php
+    include '../footer.php';
+?>

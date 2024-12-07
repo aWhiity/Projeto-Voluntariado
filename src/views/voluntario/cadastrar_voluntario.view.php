@@ -1,6 +1,6 @@
 <?php
     $titulo = "Cadastrar Voluntario";
-    include '../header.php';
+    include './views/header.php';
 ?>
 <main>
     <form action="/Projeto-Voluntariado/src/controllers/cadastrar_voluntario.controller.php" method="POST">
@@ -14,5 +14,5 @@
     </form>
 </main>
 <?php
-    include '../footer.php';
+    include './views/footer.php';
 ?>

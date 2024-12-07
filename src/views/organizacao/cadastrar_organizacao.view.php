@@ -1,6 +1,6 @@
 <?php
     $titulo = "Cadastrar Organização";
-    include '../header.php';
+    include './views/header.php';
 ?>
 
 <main>
@@ -18,5 +18,5 @@
     </form>
 </main>
 <?php
-    include '../footer.php';
+    include './views/footer.php';
 ?>

@@ -1,4 +1,8 @@
-
+<?php
+    $titulo = "Login";
+    include './views/header.php';
+?>
+    <main>
     <form method="post" action=".//">
         <label>Email: </label>
         <input type="email" name="email" required>
@@ -18,5 +22,5 @@
         <?php endif; ?>
     </main>
 <?php
-    include '../footer.php';
+    include './views/footer.php';
 ?>

@@ -1,7 +1,7 @@
 
 <?php
     $titulo = "Lista de Oportunidades";
-    include '../header.php';
+    include './views/header.php';
 ?>
 <main>
     <?php 
@@ -31,5 +31,5 @@
     
 </main>
 <?php
-    include '../footer.php';
+    include './views/footer.php';
 ?>

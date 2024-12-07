@@ -1,6 +1,6 @@
 <?php
     $titulo = "Editar Voluntario";
-    include '../header.php';
+    include './views/header.php';
 ?>
 <main>
     <?php
@@ -40,5 +40,5 @@
     </form>
 </main>
 <?php
-    include '../footer.php';
+    include './views/footer.php';
 ?>

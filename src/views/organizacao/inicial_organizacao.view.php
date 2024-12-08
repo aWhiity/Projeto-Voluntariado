@@ -38,7 +38,7 @@
         <div class="section">
             <h2>Pedir Ajuda</h2>
             <main>
-                <form action="../controllers/cadastrar_oportunidade.controller.php" method="POST">
+                <form action="./home-organizacao" method="POST">
 
                 <label>Titulo: </label> <input type="text" name="titulo" value =<?= $titulo ?? '' ?> > <br>
                 <label>Descrição: </label> <input type="text" name="descricao" value =<?= $descricao ?? '' ?> > <br>

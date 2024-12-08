@@ -25,8 +25,12 @@
             //cadastro de organizaçao
             SimpleRouter::get('/cadastro-organizacao','OrganizacaoFormController@index');
             SimpleRouter::post('/cadastro-organizacao','OrganizacaoFormController@construtor');
+            //home organizaçao
+            SimpleRouter::get('/home-organizacao','HomeOrganizacaoController@index');
+            //pedir ajuda (organizaçao)
+            SimpleRouter::post('/home-organizacao','OportunidadeFormController@construtor');
 
-
+            
             
             /*SimpleRouter::get('/cadastro-voluntario', function() {
                 echo '<h1>Pong</h1>';

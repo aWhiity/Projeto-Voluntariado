@@ -2,7 +2,7 @@
 
 require '..\views\HomeOrg.view.php';
 
-class VoluntarioFormController {
+class OportunidadeFormController {
 
     private $idOrganizacao;
     private $titulo;

@@ -4,6 +4,11 @@
 ?>
 
 <main>
+    <div class="cadastro_voluntario-container">
+         <form action="../views/voluntario/cadastrar_voluntario.view.php" method="post">
+            <button type="submit" class="button" style="background-color:lightseagreen;">Sou voluntario</button>    
+        </form>
+    </div> 
     <form action="/Projeto-Voluntariado/src/controllers/cadastrar_organizacao.controller.php" method="POST">
 
         <label>Nome: </label> <input type="text" name="nome" value =<?= $nome ?? '' ?> > <br>

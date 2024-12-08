@@ -10,6 +10,7 @@ class LoginController {
     }
 
     public function verificar() {
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->validarLogin();
         } else {

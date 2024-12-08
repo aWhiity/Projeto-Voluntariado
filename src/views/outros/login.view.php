@@ -1,9 +1,17 @@
-<?php
-    $titulo = "Login";
-    include './views/header.php';
-?>
-    <main>
-    <form method="post" action=".//">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head> 
+    
+    <?php
+        $titulo = "Login";
+        include './views/header.php';
+    ?>
+       
+       <form method="post" action=".//">
         <label>Email: </label>
         <input type="email" name="email" required>
         <label>Senha: </label>
@@ -14,13 +22,13 @@
         <br>
         <button type="submit">Enviar</button>
     </form>
-
-        <p>Não possui uma conta? <a href="/Projeto-Voluntariado/src/cadastro-voluntario">Cadastre-se aqui</a></p>
-        
+        <p>Não possui uma conta? <a href="../src/views/organizacao/cadastrar_organizacao.view.php">Cadastre-se aqui</a></p>
+    
         <?php if (isset($_GET['error'])): ?>
             <p style="color: red;">Email ou senha inválidos!</p>
         <?php endif; ?>
     </main>
-<?php
-    include './views/footer.php';
-?>
+    <?php
+        include './views/footer.php';
+    ?>
+</html>

@@ -8,11 +8,11 @@ class InscricaoModel extends Database {
     
     public function cadastrar($objetoInscricao) {
         try {
-            $query = $this->pdo->prepare("INSERT INTO inscricao (id_oportunidade, id_voluntario, status, data_cricao) values (:id_oportunidade, :id_voluntario, :status, :data_cricao)");
-    
+            $query = $this->pdo->prepare("INSERT INTO inscricao (id_oportunidade, id_voluntario, status, data_criacao) values (:id_oportunidade, :id_voluntario, :status, :data_criacao)");
+
             $query->bindValue(":id_oportunidade", $objetoInscricao->getIdOportunidade());
-            $query->bindValue(":id_voluntario", $objetoInscricao->getIdVoluntario());
-            $query->bindValue(":status", $objetoInscricao->getStatus());
+            $query->bindValue(":id_voluntario", $objetoInscricao->getIdUsuario());
+            $query->bindValue(":status", "aguardando");
             $query->bindValue(":data_criacao", date('Y-m-d')); 
     
             $query->execute();

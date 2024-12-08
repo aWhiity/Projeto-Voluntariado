@@ -5,6 +5,8 @@ class OportunidadeFormController {
     private $idOrganizacao;
     private $titulo;
     private $descricao;
+    private $status;
+    //o default é aberta
     private $data;
     private $local;
 

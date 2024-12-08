@@ -3,12 +3,16 @@
     include './views/header.php';
 ?>
     <?php 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             header("Location: login.view.php");
             exit();
         }
     ?>
+
+
     <div class="container">
         <h1>Bem-vindo(a)!</h1>
         <div class="logout-container">
@@ -47,9 +51,42 @@
                             echo "</table>";
                         }
                     ?>
+        <h2>Novas Oportunidades</h2>
+            <?php 
+            $controller = new ListarOportunidadeController();
+            $oportunidades = $controller->listarAbertas();
 
+            if (empty($oportunidades)) {
+                echo "<h2>Nada por aqui!</h2><br><p>Tente novamente mais tarde.</p>";
+            }
+            else {
+                echo "<table>";
+                echo "<thead>";
+                echo "<tr><th>Titulo</th><th>Descricao</th><th>Localizacao</th><th>Data Evento</th><th>Inscrição</th>";
+                echo "</thead>";
+                echo "<tbody>";
+                
+                foreach ($oportunidades as $oportunidade) {
+                    echo "<tr>";
+                    echo "<td>{$oportunidade['titulo']}</td>";
+                    echo "<td>{$oportunidade['descricao']}</td>";
+                    echo "<td>{$oportunidade['localizacao']}</td>";
+                    echo "<td>{$oportunidade['data_evento']}</td>";
+                    echo "<td>
+                            <form action='./cadastro-inscricao' method='post'>
+                                <input type='hidden' name='idOportunidade' value='{$oportunidade['id']}'>
+                                <button type='submit'>Inscrever-se</button>
+                            </form>
+                          </td>";
+                    echo "</tr>";
+                } 
+                
+                echo "</tbody>";
+                echo "</table>";
+            }     
+        ?>
 
-        <div class="rating">
+        <!--<div class="rating">
             <h2>Avalie uma Organização</h2>
             <label for="orgName">Nome da Organização:</label>
             <select id="orgName">
@@ -69,7 +106,7 @@
             <br><br>
 
             <button class="button" onclick="enviarAvaliacao()">Enviar Avaliação</button>
-        </div>
+        </div>-->
     </div>
 
     <script>

@@ -32,6 +32,13 @@
             //botão sair
             SimpleRouter::post('/sair','LogoutController@sair');
 
+            SimpleRouter::get('/home-organizacao','HomeOrganizacaoController@index');
+            
+            SimpleRouter::get('/listar-oportunidade','ListarOportunidadeController@index');
+
+            SimpleRouter::get('/cadastro-inscricao','CadastrarInscricaoController@index');
+            SimpleRouter::post('/cadastro-inscricao', 'CadastrarInscricaoController@construtor');
+
 
             
             

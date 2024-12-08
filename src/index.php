@@ -29,6 +29,9 @@
             SimpleRouter::get('/home-organizacao','HomeOrganizacaoController@index');
             //pedir ajuda (organizaçao)
             SimpleRouter::post('/home-organizacao','OportunidadeFormController@construtor');
+            //botão sair
+            SimpleRouter::post('/sair','LogoutController@sair');
+
 
             
             

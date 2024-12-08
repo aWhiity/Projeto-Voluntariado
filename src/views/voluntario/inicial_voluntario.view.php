@@ -12,7 +12,7 @@
     <div class="container">
         <h1>Bem-vindo(a)!</h1>
         <div class="logout-container">
-            <form action="../controllers/logout.controller.php" method="post">
+            <form action="./sair" method="post">
                 <button type="submit" class="button" style="background-color: red;">Sair</button>
             </form>
         </div>

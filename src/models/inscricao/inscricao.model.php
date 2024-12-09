@@ -37,6 +37,26 @@ class InscricaoModel extends Database {
         }
     }
 
+    public function atualizarStatus($idInscricao, $status) {
+        try {
+            if (!$status) {
+                $query = $this->pdo->prepare("DELETE FROM inscricao WHERE id = :id");
+                $query->bindValue(":id", $idInscricao);
+            } else {
+                $query = $this->pdo->prepare("UPDATE inscricao SET status = :status WHERE id = :id");
+                $query->bindValue(":status", 'aprovado');
+                $query->bindValue(":id", $idInscricao);
+            }
+    
+            $query->execute();
+        } catch (PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
+
+    
+
     public function selecionarPorVoluntario($idVoluntario) {
         try {
             $query = $this->pdo->prepare("SELECT org.nome, op.titulo, op.descricao, op.localizacao, inscricao.data_criacao 
@@ -58,6 +78,25 @@ class InscricaoModel extends Database {
             return 'Error: ' . $e->getMessage();
         }
     }
+
+    public function selecionarPorOrganizacao($idOrganizacao) {
+        try {
+            $query = $this->pdo->prepare("SELECT i.id, vol.nome, vol.telefone, op.titulo, op.data_evento
+                                                from voluntario as vol
+                                                left join inscricao as i on i.id_voluntario = vol.id
+                                                left join oportunidade as op on op.id = i.id_oportunidade
+                                                left join organizacao as org on op.id_organizacao = org.id
+                                                where i.status = 'aguardando' and org.id = :id_organizacao;"
+                                        );
+            $query->bindValue(":id_organizacao", $idOrganizacao);
+
+            $query->execute();
+            $listaInscricao = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $listaInscricao;
+        } catch (PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }    
 
     public function selecionarTodos() {
         try {

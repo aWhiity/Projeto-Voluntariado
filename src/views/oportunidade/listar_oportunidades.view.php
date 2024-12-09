@@ -7,20 +7,20 @@
     <?php 
         require_once '..\\controllers\\listar_oportunidades.controller.php';
         $controller = new ListarOportunidadeController();
-        $oportunidades = $controller->listar();
+        $inscricoes = $controller->listar();
 
-        if (empty($oportunidades)):
+        if (empty($inscricoes)):
             echo "<h2>Nada por aqui!</h2><br><p>Tente novamente mais tarde.</p>";
         else:
-            foreach($oportunidades as $oportunidade){
+            foreach($inscricoes as $inscricao){
                 
     ?>
         <div class="container">
-            <h3><?=$oportunidade['titulo']?></h3>
+            <h3><?=$inscricao['titulo']?></h3>
             <ul>
-                <li><?=$oportunidade['descricao']?></li>
-                <li><?=$oportunidade['data_evento']?></li>
-                <li><?=$oportunidade['localizacao']?></li>
+                <li><?=$inscricao['descricao']?></li>
+                <li><?=$inscricao['data_evento']?></li>
+                <li><?=$inscricao['localizacao']?></li>
             </ul>
         </div>
     

@@ -36,10 +36,14 @@
             
             SimpleRouter::get('/listar-oportunidade','ListarOportunidadeController@index');
 
+            SimpleRouter::get('/listar-inscricao','ListarInscricoesController@index');
+
             SimpleRouter::get('/cadastro-inscricao','CadastrarInscricaoController@index');
             SimpleRouter::post('/cadastro-inscricao', 'CadastrarInscricaoController@construtor');
 
-
+            
+            SimpleRouter::get('/atualizar-inscricao','EditarInscricaoController@index');
+            SimpleRouter::post('/atualizar-inscricao', 'EditarInscricaoController@editarStatus');
             
             
             /*SimpleRouter::get('/cadastro-voluntario', function() {

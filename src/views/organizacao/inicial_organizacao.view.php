@@ -2,18 +2,21 @@
     $titulo = "Menu Inicial";
     include './views/header.php';
 ?>
-    <?php 
-        session_start();
-        if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-            header("Location: login.view.php");
-            exit();
-        }
+        <main>
+        <?php 
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+            if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+                header("Location: login.view.php");
+                exit();
+            }
 
-        include('../models/organizacao.model.php');
-    ?>
+            include('../models/organizacao.model.php');
+        ?>
 
-    <div class="container">
-        <h1>Bem-vindo(a), Organização!</h1>
+        <div class="container">
+            <h1>Bem-vindo(a), Organização!</h1>
 
         <div class="logout-container">
             <form action="./sair" method="post">
@@ -50,37 +53,49 @@
             </main>
         </div>
 
-        <div class="section">
-            <h2>Avaliar Voluntário</h2>
-            <label for="volunteerName">Nome do Voluntário:</label>
-            
-            <select id="volunteerName">
-                <option value="Voluntário A">Voluntário A</option>
-                <option value="Voluntário B">Voluntário B</option>
-            </select>
-            <br><br>
+        <h2>Aprovar Voluntarios</h2>
+            <?php 
+            $controller = new ListarInscricoesController();
+            $inscricoes = $controller->listar();
 
-            <label for="rating">Avaliação:</label>
-            <select id="rating">
-                <option value="5">5 - Excelente</option>
-                <option value="4">4 - Muito bom</option>
-                <option value="3">3 - Bom</option>
-                <option value="2">2 - Regular</option>
-                <option value="1">1 - Ruim</option>
-            </select>
-            <br><br>
-
-            <button class="button" onclick="enviarAvaliacao()">Enviar Avaliação</button>
-        </div>
-    </div>
-
-    <script>
-        function enviarAvaliacao() {
-            const volunteerName = document.getElementById('volunteerName').value;
-            const rating = document.getElementById('rating').value;
-            alert("Avaliação enviada para " + volunteerName + " com nota: " + rating);
-        }
-    </script>
+            if (empty($inscricoes)) {
+                echo "<h2>Nada por aqui!</h2><br><p>Tente novamente mais tarde.</p>";
+            }
+            else {
+                echo "<table>";
+                echo "<thead>";
+                echo "<tr><th>Nome Voluntario</th><th>Telefone</th><th>Oportunidade</th><th>Data Evento</th><th></th><th></th>";
+                echo "</thead>";
+                echo "<tbody>";
+                
+                foreach ($inscricoes as $inscricao) {
+                    echo "<tr>";
+                    echo "<td>{$inscricao['nome']}</td>";
+                    echo "<td>{$inscricao['telefone']}</td>";
+                    echo "<td>{$inscricao['titulo']}</td>";
+                    echo "<td>{$inscricao['data_evento']}</td>";
+                    echo "<td>
+                            <form action='./atualizar-inscricao' method='post'>
+                                <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
+                                <input type='hidden' name='status' value='true'>
+                                <button type='submit'>Aceitar</button>
+                            </form>
+                        </td>";
+                    echo "<td>
+                            <form action='./atualizar-inscricao' method='post'>
+                                <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
+                                <input type='hidden' name='status' value='false'>
+                                <button type='submit'>Recusar</button>
+                            </form>
+                        </td>";
+                    echo "</tr>";
+                } 
+                
+                echo "</tbody>";
+                echo "</table>";
+            }     
+        ?>
+    </main>
 <?php
     include './views/footer.php';
 ?>

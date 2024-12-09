@@ -1,10 +1,14 @@
 {
-    "name": "bwosi/projeto-voluntariado",
+    "name": "mihal/projeto-voluntariado",
     "authors": [
         {
-            "name": "barbarahw",
-            "email": "127110674+barbarahw@users.noreply.github.com"
+            "name": "milena"
         }
     ],
-    "require": {}
+    "autoload": {
+        "classmap": ["./"]
+    },
+    "require": {
+        "pecee/simple-router": "^5.4"
+    }
 }

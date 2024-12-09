@@ -54,9 +54,9 @@
         <h2>Novas Oportunidades</h2>
             <?php 
             $controller = new ListarOportunidadeController();
-            $oportunidades = $controller->listarAbertas();
+            $inscricoes = $controller->listarAbertas();
 
-            if (empty($oportunidades)) {
+            if (empty($inscricoes)) {
                 echo "<h2>Nada por aqui!</h2><br><p>Tente novamente mais tarde.</p>";
             }
             else {
@@ -66,15 +66,15 @@
                 echo "</thead>";
                 echo "<tbody>";
                 
-                foreach ($oportunidades as $oportunidade) {
+                foreach ($inscricoes as $inscricao) {
                     echo "<tr>";
-                    echo "<td>{$oportunidade['titulo']}</td>";
-                    echo "<td>{$oportunidade['descricao']}</td>";
-                    echo "<td>{$oportunidade['localizacao']}</td>";
-                    echo "<td>{$oportunidade['data_evento']}</td>";
+                    echo "<td>{$inscricao['titulo']}</td>";
+                    echo "<td>{$inscricao['descricao']}</td>";
+                    echo "<td>{$inscricao['localizacao']}</td>";
+                    echo "<td>{$inscricao['data_evento']}</td>";
                     echo "<td>
                             <form action='./cadastro-inscricao' method='post'>
-                                <input type='hidden' name='idOportunidade' value='{$oportunidade['id']}'>
+                                <input type='hidden' name='idOportunidade' value='{$inscricao['id']}'>
                                 <button type='submit'>Inscrever-se</button>
                             </form>
                           </td>";

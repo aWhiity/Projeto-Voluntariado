@@ -8,6 +8,7 @@ class HomeOrganizacaoController {
     }
 
     public function listar() {
+        
         $organizacaoId = $_SESSION['user_id']; 
         
         $organizacaoModel = new OrganizacaoModel();

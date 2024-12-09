@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< Updated upstream
-    "content-hash": "69956b6b10befd7102949095e600fb8a",
+    "content-hash": "02f15184cab1de810818424486c105d1",
     "packages": [
         {
             "name": "pecee/simple-router",
@@ -71,10 +70,6 @@
             "time": "2023-12-11T21:48:25+00:00"
         }
     ],
-=======
-    "content-hash": "a20d8b3709caba388f5a28a89fb5f790",
-    "packages": [],
->>>>>>> Stashed changes
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",

@@ -56,7 +56,8 @@ class LoginController {
     }
 
     public function redirecionarLogin() {
-        require './views/outros/login.view.php';
+        //require './views/outros/login.view.php';
+        echo 'chegou';
         exit();
     }
 }

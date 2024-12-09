@@ -5,7 +5,7 @@
 
 <main>
     <div class="cadastro_voluntario-container">
-         <form action="../views/voluntario/cadastrar_voluntario.view.php" method="post">
+         <form action="./cadastro-voluntario" method="get">
             <button type="submit" class="button" style="background-color:lightseagreen;">Sou voluntario</button>    
         </form>
     </div> 

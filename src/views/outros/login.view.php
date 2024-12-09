@@ -22,7 +22,7 @@
         <br>
         <button type="submit">Enviar</button>
     </form>
-        <p>Não possui uma conta? <a href="../src/views/organizacao/cadastrar_organizacao.view.php">Cadastre-se aqui</a></p>
+        <p>Não possui uma conta? <a href="./cadastro-organizacao">Cadastre-se aqui</a></p>
     
         <?php if (isset($_GET['error'])): ?>
             <p style="color: red;">Email ou senha inválidos!</p>

@@ -8,7 +8,7 @@ class Oportunidade extends Database {
     
     public function cadastrar($objetoOportunidade) {
         try {
-            $query = $this->pdo->prepare("INSERT INTO oportunidade (id_organizacao, titulo, descricao, data_evento, localizacao, data_cricao) values (:id_organizacao, :titulo, :descricao, :data_evento, :localizacao, :data_cricao)");
+            $query = $this->pdo->prepare("INSERT INTO oportunidade (id_organizacao, titulo, descricao, data_evento, localizacao, data_criacao) values (:id_organizacao, :titulo, :descricao, :data_evento, :localizacao, :data_criacao)");
     
             $query->bindValue(":id_organizacao", $objetoOportunidade->getIdOrganizacao());
             $query->bindValue(":titulo", $objetoOportunidade->getTitulo());
@@ -88,10 +88,10 @@ class Oportunidade extends Database {
         }
     }
     
-    public function selecionarPorIdOrganizacao($id) {
+    public function selecionarOportunidadeFechada($id) {
         try {
-            $query = $this->pdo->prepare("SELECT * from oportunidade where id_organizacao = :id");
-            
+            $query = $this->pdo->prepare("SELECT * from oportunidade where id_organizacao = :id and status != :status");
+            $query->bindValue(":status", 'fechado');
             $query->bindValue(":id", $id);
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -99,5 +99,29 @@ class Oportunidade extends Database {
             return 'Error: ' . $e->getMessage();
         }
     }
+
+    public function excluirOportunidade($id) {
+        try {
+            $query = $this->pdo->prepare("DELETE FROM oportunidade WHERE id = :id");
+            $query->bindValue(":id", $id, PDO::PARAM_INT); 
+            $query->execute();
+            return $query->rowCount(); 
+        } catch (PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function atualizarStatus($id)  {
+        
+        try {
+            $query = $this->pdo->prepare("UPDATE oportunidade SET status = :status WHERE id = :id");
+            $query->bindValue(":status", 'fechado');
+            $query->bindValue(":id", $id);
+            $query->execute();
+        } catch (PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+    
 }
 ?>

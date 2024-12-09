@@ -27,8 +27,9 @@
             SimpleRouter::post('/cadastro-organizacao','OrganizacaoFormController@construtor');
             //home organizaçao
             SimpleRouter::get('/home-organizacao','HomeOrganizacaoController@index');
-            //pedir ajuda (organizaçao)
+            //pedir ajuda (organizaçao) / deletar da lista
             SimpleRouter::post('/home-organizacao','OportunidadeFormController@construtor');
+            SimpleRouter::post('/home-organizacao/delete','ListarOportunidadeController@deletarDaLista');
             //botão sair
             SimpleRouter::post('/sair','LogoutController@sair');
 

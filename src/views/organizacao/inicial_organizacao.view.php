@@ -27,9 +27,9 @@
 
             <?php
             $controller = new ListarOportunidadeController();
-            $inscricoes = $controller->listarPorId();
+            $oportunidades = $controller->listarPorId();
             
-            if (empty($inscricoes)) {
+            if (empty($oportunidades)) {
                 echo "<h2>Nada por aqui!</h2><br><p>Tente novamente mais tarde.</p>";
             }
 
@@ -44,26 +44,25 @@
                         <th>Data Evento</th>
                         <th>Localização</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                    foreach ($inscricoes as $inscricao) {
+                    foreach ($oportunidades as $oportunidade) {
                         echo "<tr>";
-                        echo "<td>{$inscricao['titulo']}</td>";
-                        echo "<td>{$inscricao['descricao']}</td>";
-                        echo "<td>{$inscricao['status']}</td>";
-                        echo "<td>{$inscricao['data_evento']}</td>";
-                        echo "<td>{$inscricao['localizacao']}</td>";
-                        /*echo "<td>
-                                <form action='./atualizar-inscricao' method='post'>
-                                    <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
+                        echo "<td>{$oportunidade['titulo']}</td>";
+                        echo "<td>{$oportunidade['descricao']}</td>";
+                        echo "<td>{$oportunidade['status']}</td>";
+                        echo "<td>{$oportunidade['data_evento']}</td>";
+                        echo "<td>{$oportunidade['localizacao']}</td>";
+                        echo "<td>
+                                <form action='./home-organizacao/delete' method='post'>
+                                    <input type='hidden' name='idOportunidade' value='{$oportunidade['id']}'>
                                     <input type='hidden' name='status' value='true'>
-                                    <button type='submit'>Aceitar</button>
+                                    <button type='submit'>Deletar</button>
                                 </form>
                             </td>";
-                        echo "<td>
+                        /*echo "<td>
                                 <form action='./atualizar-inscricao' method='post'>
                                     <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
                                     <input type='hidden' name='status' value='false'>

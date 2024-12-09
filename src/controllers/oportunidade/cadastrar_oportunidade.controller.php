@@ -20,7 +20,7 @@ class OportunidadeFormController {
         $this->idOrganizacao = $_SESSION['user_id']; 
         $this->titulo = $_POST['titulo'] ?? null;
         $this->descricao = $_POST['descricao'] ?? null;
-        $this->data = isset($_POST['data']) ?? null;
+        $this->data = $_POST['data'] ?? null;
         $this->local = $_POST['local'] ?? null;
 
         if ($this->validarResultados() == 0){

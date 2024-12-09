@@ -88,5 +88,16 @@ class Oportunidade extends Database {
         }
     }
     
+    public function selecionarPorIdOrganizacao($id) {
+        try {
+            $query = $this->pdo->prepare("SELECT * from oportunidade where id_organizacao = :id");
+            
+            $query->bindValue(":id", $id);
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return 'Error: ' . $e->getMessage();
+        }
+    }
 }
 ?>

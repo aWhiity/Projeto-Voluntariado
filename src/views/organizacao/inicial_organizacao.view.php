@@ -11,8 +11,6 @@
                 header("Location: login.view.php");
                 exit();
             }
-
-            include('../models/organizacao.model.php');
         ?>
 
         <div class="container">
@@ -26,16 +24,64 @@
 
         <div class="section">
             <h2>Pedidos de Ajuda</h2>
+
+            <?php
+            $controller = new ListarOportunidadeController();
+            $inscricoes = $controller->listarPorId();
+            
+            if (empty($inscricoes)) {
+                echo "<h2>Nada por aqui!</h2><br><p>Tente novamente mais tarde.</p>";
+            }
+
+            else {
+            ?>
             <table>
                 <thead>
                     <tr>
+                        <th>Título</th>
                         <th>Descrição</th>
                         <th>Status</th>
-                        <th>Data Limite</th>
-                        <th>Ação</th>
+                        <th>Data Evento</th>
+                        <th>Localização</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
+                <tbody>
+                <?php
+                    foreach ($inscricoes as $inscricao) {
+                        echo "<tr>";
+                        echo "<td>{$inscricao['titulo']}</td>";
+                        echo "<td>{$inscricao['descricao']}</td>";
+                        echo "<td>{$inscricao['status']}</td>";
+                        echo "<td>{$inscricao['data_evento']}</td>";
+                        echo "<td>{$inscricao['localizacao']}</td>";
+                        /*echo "<td>
+                                <form action='./atualizar-inscricao' method='post'>
+                                    <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
+                                    <input type='hidden' name='status' value='true'>
+                                    <button type='submit'>Aceitar</button>
+                                </form>
+                            </td>";
+                        echo "<td>
+                                <form action='./atualizar-inscricao' method='post'>
+                                    <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
+                                    <input type='hidden' name='status' value='false'>
+                                    <button type='submit'>Recusar</button>
+                                </form>
+                            </td>";*/
+                        echo "</tr>";
+                    } 
+                    
+                    echo "</tbody>";
+                    echo "</table>";
+                ?>
             </table>
+
+            <?php
+            }
+            ?>
+    
         </div>
 
         <div class="section">

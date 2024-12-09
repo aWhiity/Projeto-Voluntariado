@@ -46,6 +46,8 @@
             SimpleRouter::post('/atualizar-inscricao', 'EditarInscricaoController@editarStatus');
             
             SimpleRouter::get('/Projeto-Voluntariado/src', 'LoginController@verificar');
+
+
             /*SimpleRouter::get('/cadastro-voluntario', function() {
                 echo '<h1>Pong</h1>';
             });*/

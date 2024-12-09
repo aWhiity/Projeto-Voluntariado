@@ -12,6 +12,11 @@ class OportunidadeFormController {
 
 
     public function construtor() {
+        
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $this->idOrganizacao = $_SESSION['user_id']; 
         $this->titulo = $_POST['titulo'] ?? null;
         $this->descricao = $_POST['descricao'] ?? null;
@@ -25,6 +30,7 @@ class OportunidadeFormController {
     }
      
     public function validarResultados() {
+        
         $erro = 0;
         
         if (empty($this->titulo)){
@@ -47,8 +53,15 @@ class OportunidadeFormController {
     }
 
     public function adicionarResultados(){
-        $model = new Oportunidade();
-        return $model->cadastrar($this);
+        $erro = $this->validarResultados();
+        if ($erro == 0){
+            $model = new Oportunidade(); 
+            return $model->cadastrar($this);
+        } else{
+            return "Erro ao cadastrar oportunidade. Verifique os campos e tente novamente.";
+        }
+        
+       
     }
 
     public function getIdOrganizacao() {

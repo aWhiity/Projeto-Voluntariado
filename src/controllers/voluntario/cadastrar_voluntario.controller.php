@@ -1,4 +1,6 @@
-<?php 
+<?php         
+
+use Pecee\SimpleRouter\SimpleRouter;
 
 class VoluntarioFormController {
 
@@ -24,6 +26,7 @@ class VoluntarioFormController {
         if ($this->validarResultados() === 0) {
             $feedback = $this->adicionarResultados();
             echo $feedback;
+            SimpleRouter::response()->redirect('./');
         }
     }
      

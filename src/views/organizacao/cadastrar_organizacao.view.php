@@ -9,7 +9,7 @@
             <button type="submit" class="button" style="background-color:lightseagreen;">Sou voluntario</button>    
         </form>
     </div> 
-    <form action="/Projeto-Voluntariado/src/controllers/cadastrar_organizacao.controller.php" method="POST">
+    <form action="./cadastro-organizacao" method="POST">
 
         <label>Nome: </label> <input type="text" name="nome" value =<?= $nome ?? '' ?> > <br>
         <label>CPF/CNPJ: </label> <input type="text" name="cnpj" value =<?= $cpf ?? '' ?> > <br>

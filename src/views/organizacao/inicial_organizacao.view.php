@@ -96,6 +96,13 @@
 
                 <button>Enviar</button>
                 </form>
+
+                <?php
+                if (isset($feedback)) {
+                    echo "<p><strong>" . htmlspecialchars($feedback) . "</strong></p>";
+                }
+                ?>
+                
             </main>
         </div>
 
@@ -105,7 +112,7 @@
             $inscricoes = $controller->listar();
 
             if (empty($inscricoes)) {
-                echo "<h2>Nada por aqui!</h2><br><p>Tente novamente mais tarde.</p>";
+                echo "<p>Nada por aqui!<p><p>Tente novamente mais tarde.</p>";
             }
             else {
                 echo "<table>";

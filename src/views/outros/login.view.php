@@ -19,6 +19,7 @@
         <?php if (isset($_GET['error'])): ?>
             <p style="color: red;">Email ou senha inválidos!</p>
         <?php endif; ?>
+        
     </main>
 <?php
     include './views/footer.php';

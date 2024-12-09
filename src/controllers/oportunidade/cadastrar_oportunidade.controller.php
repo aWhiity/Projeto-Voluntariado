@@ -23,6 +23,9 @@ class OportunidadeFormController {
         $this->data = $_POST['data'] ?? null;
         $this->local = $_POST['local'] ?? null;
 
+        $feedback = $this->adicionarResultados();
+        $_SESSION['feedback'] = $feedback;
+
         if ($this->validarResultados() == 0){
             $feedback = $this->adicionarResultados();
             echo $feedback;
@@ -56,7 +59,7 @@ class OportunidadeFormController {
         $erro = $this->validarResultados();
         if ($erro == 0){
             $model = new Oportunidade(); 
-            return $model->cadastrar($this);
+            return $model->cadastrar($this) ? "Oportunidade cadastrada com sucesso!" : "Erro ao cadastrar a oportunidade.";
         } else{
             return "Erro ao cadastrar oportunidade. Verifique os campos e tente novamente.";
         }

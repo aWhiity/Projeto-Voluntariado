@@ -43,8 +43,6 @@
                         <th>Status</th>
                         <th>Data Evento</th>
                         <th>Localização</th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,20 +54,6 @@
                         echo "<td>{$inscricao['status']}</td>";
                         echo "<td>{$inscricao['data_evento']}</td>";
                         echo "<td>{$inscricao['localizacao']}</td>";
-                        /*echo "<td>
-                                <form action='./atualizar-inscricao' method='post'>
-                                    <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
-                                    <input type='hidden' name='status' value='true'>
-                                    <button type='submit'>Aceitar</button>
-                                </form>
-                            </td>";
-                        echo "<td>
-                                <form action='./atualizar-inscricao' method='post'>
-                                    <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
-                                    <input type='hidden' name='status' value='false'>
-                                    <button type='submit'>Recusar</button>
-                                </form>
-                            </td>";*/
                         echo "</tr>";
                     } 
                     
@@ -89,7 +73,7 @@
             <main>
                 <form action="./home-organizacao" method="POST">
 
-                <label>Titulo: </label> <input type="text" name="titulo" value =<?= $titulo ?? '' ?> > <br>
+                <label>Titulo: </label> <input type="text" name="tituloOp" value =<?= $tituloOp ?? '' ?> > <br>
                 <label>Descrição: </label> <input type="text" name="descricao" value =<?= $descricao ?? '' ?> > <br>
                 <label>Data do Evento: </label> <input type="text" name="data" value =<?= $data ?? '' ?> > <br>
                 <label>Localização: </label> <input type="text" name="local" value =<?= $local ?? '' ?> > <br>

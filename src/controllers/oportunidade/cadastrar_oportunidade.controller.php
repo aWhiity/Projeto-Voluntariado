@@ -18,10 +18,12 @@ class OportunidadeFormController {
         }
 
         $this->idOrganizacao = $_SESSION['user_id']; 
-        $this->titulo = $_POST['titulo'] ?? null;
+        $this->titulo = $_POST['tituloOp'] ?? null;
         $this->descricao = $_POST['descricao'] ?? null;
-        $this->data = $_POST['data'] ?? null;
         $this->local = $_POST['local'] ?? null;
+
+        $date = DateTime::createFromFormat('d/m/Y', $_POST['data'] );
+        $this->data = $date->format('Y-m-d');
 
         if ($this->validarResultados() == 0){
             $feedback = $this->adicionarResultados();
@@ -52,11 +54,17 @@ class OportunidadeFormController {
         return $erro;
     }
 
+    public function redirecionar() {
+        header("Location: ../src/home-organizacao");
+        exit();
+    }
+
     public function adicionarResultados(){
         $erro = $this->validarResultados();
         if ($erro == 0){
             $model = new Oportunidade(); 
-            return $model->cadastrar($this);
+            $model->cadastrar($this);
+            $this->redirecionar();
         } else{
             return "Erro ao cadastrar oportunidade. Verifique os campos e tente novamente.";
         }

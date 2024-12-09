@@ -1,5 +1,8 @@
 <?php 
 
+use Pecee\SimpleRouter\SimpleRouter;
+
+
     class OrganizacaoFormController {
 
         private $nome;
@@ -28,7 +31,8 @@
             if ($this->validarSeVazio()==0 && $this->validarValidade()==0 ){
            
                 $feedback = $this->adicionarResultados(); 
-                echo $feedback;                   
+                echo $feedback;   
+                SimpleRouter::response()->redirect('./');
             }    
         }
          

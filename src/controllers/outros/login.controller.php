@@ -45,7 +45,7 @@ class LoginController {
                 SimpleRouter::response()->redirect('/Projeto-Voluntariado/src/home-organizacao');
             }
         } else {
-            SimpleRouter::response()->redirect('/?error=invalid_credentials');
+            SimpleRouter::response()->redirect('/Projeto-Voluntariado/src/?error=true');
         }
     }
     

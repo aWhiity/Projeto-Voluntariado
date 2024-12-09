@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06/11/2024 às 00:08
+-- Tempo de geração: 09/12/2024 às 02:06
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -41,16 +41,22 @@ CREATE TABLE `inscricao` (
 --
 
 INSERT INTO `inscricao` (`id`, `id_oportunidade`, `id_voluntario`, `status`, `data_criacao`, `data_ultima_modificacao`) VALUES
-(1, 1, 1, 'aguardando', '2024-01-01', NULL),
 (2, 2, 2, 'aprovado', '2024-01-01', NULL),
-(3, 3, 1, 'aprovado', '2024-01-02', NULL),
 (4, 4, 2, 'aprovado', '2024-01-03', NULL),
-(5, 5, 1, 'rejeitado', '2024-01-04', NULL),
 (6, 6, 2, 'aprovado', '2024-01-05', NULL),
-(7, 7, 1, 'aguardando', '2024-01-06', NULL),
-(8, 8, 2, 'aguardando', '2024-01-07', NULL),
-(9, 9, 1, 'aguardando', '2024-01-08', NULL),
-(10, 10, 2, 'aprovado', '2024-01-09', NULL);
+(10, 10, 2, 'aprovado', '2024-01-09', NULL),
+(23, 4, 1, 'aguardando', '2024-12-08', NULL),
+(24, 4, 1, 'aguardando', '2024-12-08', NULL),
+(25, 4, 1, 'aguardando', '2024-12-08', NULL),
+(26, 4, 1, 'aguardando', '2024-12-08', NULL),
+(27, 1, 1, 'aprovado', '2024-12-08', NULL),
+(28, 1, 1, 'aprovado', '2024-12-08', NULL),
+(30, 5, 1, 'aguardando', '2024-12-08', NULL),
+(31, 7, 1, 'aguardando', '2024-12-09', NULL),
+(32, 9, 2, 'aguardando', '2024-12-09', NULL),
+(33, 9, 2, 'aguardando', '2024-12-09', NULL),
+(34, 8, 2, 'aguardando', '2024-12-09', NULL),
+(35, 8, 2, 'aguardando', '2024-12-09', NULL);
 
 -- --------------------------------------------------------
 
@@ -63,6 +69,7 @@ CREATE TABLE `oportunidade` (
   `id_organizacao` int(11) NOT NULL,
   `titulo` tinytext NOT NULL,
   `descricao` tinytext NOT NULL,
+  `status` varchar(30) NOT NULL DEFAULT 'aberta',
   `data_evento` date NOT NULL,
   `localizacao` tinytext NOT NULL,
   `data_criacao` date NOT NULL,
@@ -73,17 +80,17 @@ CREATE TABLE `oportunidade` (
 -- Despejando dados para a tabela `oportunidade`
 --
 
-INSERT INTO `oportunidade` (`id`, `id_organizacao`, `titulo`, `descricao`, `data_evento`, `localizacao`, `data_criacao`, `data_ultima_modificacao`) VALUES
-(1, 1, 'Oportunidade A', 'Descrição da Oportunidade A', '2024-12-01', 'Local A', '2024-01-01', NULL),
-(2, 2, 'Oportunidade B', 'Descrição da Oportunidade B', '2024-12-02', 'Local B', '2024-01-01', NULL),
-(3, 1, 'Oportunidade C', 'Descrição da Oportunidade C', '2024-12-03', 'Local C', '2024-01-02', NULL),
-(4, 1, 'Oportunidade D', 'Descrição da Oportunidade D', '2024-12-04', 'Local D', '2024-01-03', NULL),
-(5, 2, 'Oportunidade E', 'Descrição da Oportunidade E', '2024-12-05', 'Local E', '2024-01-04', NULL),
-(6, 2, 'Oportunidade F', 'Descrição da Oportunidade F', '2024-12-06', 'Local F', '2024-01-05', NULL),
-(7, 1, 'Oportunidade G', 'Descrição da Oportunidade G', '2024-12-07', 'Local G', '2024-01-06', NULL),
-(8, 1, 'Oportunidade H', 'Descrição da Oportunidade H', '2024-12-08', 'Local H', '2024-01-07', NULL),
-(9, 2, 'Oportunidade I', 'Descrição da Oportunidade I', '2024-12-09', 'Local I', '2024-01-08', NULL),
-(10, 2, 'Oportunidade J', 'Descrição da Oportunidade J', '2024-12-10', 'Local J', '2024-01-09', NULL);
+INSERT INTO `oportunidade` (`id`, `id_organizacao`, `titulo`, `descricao`, `status`, `data_evento`, `localizacao`, `data_criacao`, `data_ultima_modificacao`) VALUES
+(1, 1, 'Oportunidade A', 'Descrição da Oportunidade A', 'aberta', '2024-12-01', 'Local A', '2024-01-01', NULL),
+(2, 2, 'Oportunidade B', 'Descrição da Oportunidade B', 'aberta', '2024-12-02', 'Local B', '2024-01-01', NULL),
+(3, 1, 'Oportunidade C', 'Descrição da Oportunidade C', 'em andamento', '2024-12-03', 'Local C', '2024-01-02', NULL),
+(4, 1, 'Oportunidade D', 'Descrição da Oportunidade D', 'aberta', '2024-12-04', 'Local D', '2024-01-03', NULL),
+(5, 2, 'Oportunidade E', 'Descrição da Oportunidade E', 'aberta', '2024-12-05', 'Local E', '2024-01-04', NULL),
+(6, 2, 'Oportunidade F', 'Descrição da Oportunidade F', 'aberta', '2024-12-06', 'Local F', '2024-01-05', NULL),
+(7, 1, 'Oportunidade G', 'Descrição da Oportunidade G', 'aberta', '2024-12-07', 'Local G', '2024-01-06', NULL),
+(8, 1, 'Oportunidade H', 'Descrição da Oportunidade H', 'aberta', '2024-12-08', 'Local H', '2024-01-07', NULL),
+(9, 2, 'Oportunidade I', 'Descrição da Oportunidade I', 'aberta', '2024-12-09', 'Local I', '2024-01-08', NULL),
+(10, 2, 'Oportunidade J', 'Descrição da Oportunidade J', 'aberta', '2024-12-10', 'Local J', '2024-01-09', NULL);
 
 -- --------------------------------------------------------
 
@@ -110,7 +117,8 @@ CREATE TABLE `organizacao` (
 
 INSERT INTO `organizacao` (`id`, `nome`, `cnpj`, `telefone`, `endereco`, `email`, `senha`, `descricao`, `data_criacao`, `data_ultima_modificacao`) VALUES
 (1, 'Organização A', '12.345.678/0001-99', '1234567890', 'Rua A, 123', 'contato@organizacaoa.com', 'senhaA', 'Descrição da Organização A', '2024-01-01', NULL),
-(2, 'Organização B', '98.765.432/0001-88', '0987654321', 'Rua B, 456', 'contato@organizacaob.com', 'senhaB', 'Descrição da Organização B', '2024-01-01', NULL);
+(2, 'Organização B', '98.765.432/0001-88', '0987654321', 'Rua B, 456', 'contato@organizacaob.com', 'senhaB', 'Descrição da Organização B', '2024-01-01', NULL),
+(3, 'aaa2', '132132', '12', '12sq', 'dsah@gmail.com', '123', '123', '2024-12-08', NULL);
 
 -- --------------------------------------------------------
 
@@ -140,6 +148,32 @@ INSERT INTO `voluntario` (`id`, `nome`, `telefone`, `cpf`, `email`, `senha`, `da
 (4, 'luiz', '41983746634', '14572638901', 'luiz@gmail.com', '87654321', '2024-10-31', NULL),
 (6, 'patricia', '42936738219', '12345678901', 'pat@gmail.com', '12344321', '2024-10-31', '2024-11-05'),
 (7, 'jose', '11999352780', '12345678910', 'jose@gmail.com', '12345678', '2024-11-01', '2024-11-05');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura stand-in para view `vw_oportunidades_disponiveis`
+-- (Veja abaixo para a visão atual)
+--
+CREATE TABLE `vw_oportunidades_disponiveis` (
+`id` int(11)
+,`id_organizacao` int(11)
+,`id_voluntario` int(11)
+,`titulo` tinytext
+,`descricao` tinytext
+,`status` varchar(30)
+,`data_evento` date
+,`localizacao` tinytext
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para view `vw_oportunidades_disponiveis`
+--
+DROP TABLE IF EXISTS `vw_oportunidades_disponiveis`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_oportunidades_disponiveis`  AS SELECT `o`.`id` AS `id`, `o`.`id_organizacao` AS `id_organizacao`, `i`.`id_voluntario` AS `id_voluntario`, `o`.`titulo` AS `titulo`, `o`.`descricao` AS `descricao`, `o`.`status` AS `status`, `o`.`data_evento` AS `data_evento`, `o`.`localizacao` AS `localizacao` FROM (`oportunidade` `o` left join `inscricao` `i` on(`i`.`id_oportunidade` = `o`.`id`)) WHERE `o`.`status` = 'aberta' ;
 
 --
 -- Índices para tabelas despejadas
@@ -180,7 +214,7 @@ ALTER TABLE `voluntario`
 -- AUTO_INCREMENT de tabela `inscricao`
 --
 ALTER TABLE `inscricao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de tabela `oportunidade`
@@ -192,7 +226,7 @@ ALTER TABLE `oportunidade`
 -- AUTO_INCREMENT de tabela `organizacao`
 --
 ALTER TABLE `organizacao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `voluntario`

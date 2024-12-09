@@ -23,47 +23,44 @@ class OportunidadeFormController {
         $this->data = $_POST['data'] ?? null;
         $this->local = $_POST['local'] ?? null;
 
-        $feedback = $this->adicionarResultados();
-        $_SESSION['feedback'] = $feedback;
-
-        if ($this->validarResultados() == 0){
+        $erros = $this->validarResultados();
+        
+        if (empty($erros)) {
             $feedback = $this->adicionarResultados();
-            echo $feedback;
+            $_SESSION['mensagem_feedback'] = $feedback;
+        } else {
+            $_SESSION['mensagem_feedback'] = implode('<br>', $erros);
         }
+
+        header("Location: ./home-organizacao");
+        exit();
     }
      
     public function validarResultados() {
         
-        $erro = 0;
+        $erros = [  ];
         
         if (empty($this->titulo)){
-            echo "Titulo obrigatório!<br>";
-            $erro++;
+            $erros [] = "Titulo obrigatório!";
         }
         if (empty($this->descricao)){
-            echo "Descrição obrigatória!<br>";
-            $erro++;
+            $erros [] = "Descrição obrigatória!";
         }
         if (empty($this->data)){
-            echo "Data obrigatória!<br>";
-            $erro++;
+            $erros [] = "Data obrigatória!";
         }
         if (empty($this->local)){
-            echo "Localização obrigatória!<br>";
-            $erro++;
+            $erros [] = "Localização obrigatória!";
         }
-        return $erro;
+        return $erros;
     }
 
     public function adicionarResultados(){
-        $erro = $this->validarResultados();
-        if ($erro == 0){
-            $model = new Oportunidade(); 
-            return $model->cadastrar($this) ? "Oportunidade cadastrada com sucesso!" : "Erro ao cadastrar a oportunidade.";
-        } else{
-            return "Erro ao cadastrar oportunidade. Verifique os campos e tente novamente.";
-        }
         
+        $model = new Oportunidade(); 
+        return $model->cadastrar($this) ? 
+            "Oportunidade cadastrada com sucesso!" : 
+            "Erro ao cadastrar a oportunidade.";
        
     }
 

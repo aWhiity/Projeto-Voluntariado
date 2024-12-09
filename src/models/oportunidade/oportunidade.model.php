@@ -8,7 +8,7 @@ class Oportunidade extends Database {
     
     public function cadastrar($objetoOportunidade) {
         try {
-            $query = $this->pdo->prepare("INSERT INTO oportunidade (id_organizacao, titulo, descricao, data_evento, localizacao, data_cricao) values (:id_organizacao, :titulo, :descricao, :data_evento, :localizacao, :data_cricao)");
+            $query = $this->pdo->prepare("INSERT INTO oportunidade (id_organizacao, titulo, descricao, data_evento, localizacao, data_criacao) values (:id_organizacao, :titulo, :descricao, :data_evento, :localizacao, :data_criacao)");
     
             $query->bindValue(":id_organizacao", $objetoOportunidade->getIdOrganizacao());
             $query->bindValue(":titulo", $objetoOportunidade->getTitulo());

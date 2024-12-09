@@ -4,7 +4,6 @@
 ?>
 <main>
     <?php 
-    require_once '..\\controllers\\listar_organizacao.controller.php';
     $controller = new ListarOrganizacaoController();
     $organizacoes = $controller->listar();
     

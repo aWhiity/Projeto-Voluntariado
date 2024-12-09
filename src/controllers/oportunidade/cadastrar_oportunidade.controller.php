@@ -1,5 +1,7 @@
 <?php 
 
+
+
 class OportunidadeFormController {
 
     private $idOrganizacao;
@@ -54,6 +56,8 @@ class OportunidadeFormController {
         }
         return $erros;
     }
+
+    
 
     public function adicionarResultados(){
         

@@ -53,25 +53,16 @@
                     <?php
                         foreach ($inscricoes as $inscricao) {
                             echo "<tr>";
-                            echo "<td>{$inscricao['titulo']}</td>";
-                            echo "<td>{$inscricao['descricao']}</td>";
-                            echo "<td>{$inscricao['status']}</td>";
-                            echo "<td>{$inscricao['data_evento']}</td>";
-                            echo "<td>{$inscricao['localizacao']}</td>";
-                            /*echo "<td>
-                                    <form action='./atualizar-inscricao' method='post'>
-                                        <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
-                                        <input type='hidden' name='status' value='true'>
-                                        <button type='submit'>Aceitar</button>
-                                    </form>
-                                </td>";
-                            echo "<td>
-                                    <form action='./atualizar-inscricao' method='post'>
-                                        <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
-                                        <input type='hidden' name='status' value='false'>
-                                        <button type='submit'>Recusar</button>
-                                    </form>
-                                </td>";*/
+                        echo "<td>{$oportunidade['titulo']}</td>";
+                        echo "<td>{$oportunidade['descricao']}</td>";
+                        echo "<td>{$oportunidade['status']}</td>";
+                        echo "<td>{$oportunidade['data_evento']}</td>";
+                        echo "<td>{$oportunidade['localizacao']}</td>";
+                        echo "<td>
+                                <form action='./home-organizacao/delete' method='post'>
+                                    <input type='hidden' name='idOportunidade' value='{$oportunidade['id']}'>
+                        
+
                             echo "</tr>";
                         }
     
@@ -141,10 +132,10 @@
                                 <form action='./atualizar-inscricao' method='post'>
                                     <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
                                     <input type='hidden' name='status' value='true'>
-                                    <button type='submit'>Aceitar</button>
+                                    <button type='submit'>Deletar</button>
                                 </form>
                             </td>";
-                        echo "<td>
+                        /*echo "<td>
                                 <form action='./atualizar-inscricao' method='post'>
                                     <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
                                     <input type='hidden' name='status' value='false'>

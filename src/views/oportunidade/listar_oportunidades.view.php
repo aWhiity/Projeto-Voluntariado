@@ -5,7 +5,6 @@
 ?>
 <main>
     <?php 
-        require_once '..\\controllers\\listar_oportunidades.controller.php';
         $controller = new ListarOportunidadeController();
         $inscricoes = $controller->listar();
 

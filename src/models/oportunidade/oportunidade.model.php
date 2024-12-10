@@ -18,6 +18,7 @@ class Oportunidade extends Database {
             $query->bindValue(":data_criacao", date('Y-m-d')); 
     
             $query->execute();
+            return true;
         } catch (PDOException $e) {
             return 'Error: ' . $e->getMessage();
         }

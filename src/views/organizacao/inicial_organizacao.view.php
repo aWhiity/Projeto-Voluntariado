@@ -88,7 +88,7 @@
             <main>
                 <form action="./home-organizacao" method="POST">
 
-                <label>Titulo: </label> <input type="text" name="titulo" value =<?= $titulo ?? '' ?> > <br>
+                <label>Titulo: </label> <input type="text" name="tituloOp" value =<?= $tituloOp ?? '' ?> > <br>
                 <label>Descrição: </label> <input type="text" name="descricao" value =<?= $descricao ?? '' ?> > <br>
                 <label>Data do Evento: </label> <input type="text" name="data" value =<?= $data ?? '' ?> > <br>
                 <label>Localização: </label> <input type="text" name="local" value =<?= $local ?? '' ?> > <br>

@@ -23,9 +23,19 @@ Configuração do Projeto:
 Defina os parâmetros de conexão com o banco de dados no arquivo config.php, localizado na pasta src.
 Iniciar o Projeto:
 
+Instale o composer em https://getcomposer.org/
+no terminal do vscode (dentro do Projeto-Voluntariado - ver mais nas instruções do XAMPP), dê o comando composer init.
+preencha os dados necessários.
+em seguida, dê o comando composer require pecee/simple-router
+no arquivo composer.json, abaixo de “authors”, escreva 
+"autoload": { 
+"classmap": ["./"] 
+},
+No caso de erros de rota, é recomendado usar o comando composer dump-autoload
+
+
 No painel do XAMPP, ative o servidor Apache e o MySQL.
 Acesse http://localhost/Projeto-Voluntariado no navegador para iniciar a aplicação.
-
 
 ## Uso
 Ao acessar a página de Login, o usuário pode cadastrar-se como voluntário ou organização.
@@ -46,4 +56,5 @@ Como organização, é possível criar pedidos de ajuda e avaliar os voluntário
 - Falhas nas avaliações de organizações e voluntários.
 - Página de perfil não implementada.
 - CSS não implementado nos feedbacks de cadastro.
+
 

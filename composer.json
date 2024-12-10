@@ -1,0 +1,14 @@
+{
+    "name": "mihal/projeto-voluntariado",
+    "authors": [
+        {
+            "name": "milena"
+        }
+    ],
+    "autoload": {
+        "classmap": ["./"]
+    },
+    "require": {
+        "pecee/simple-router": "^5.4"
+    }
+}

@@ -1,4 +1,3 @@
-<html>
 
     <?php
         $titulo = "Menu Inicial";
@@ -31,12 +30,12 @@
                 $controller = new ListarOportunidadeController();
                 $inscricoes = $controller->listarPorId();
     
-                if (empty($inscricoes)) {
+                if (empty($oportunidades)) {
                     echo "<h2>Nada por aqui!</h2><br><p>Tente novamente mais tarde.</p>";
-                }
-    
-                else {
+                } else {
+
                 ?>
+
                 <table>
                     <thead>
                         <tr>
@@ -50,9 +49,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                    
                     <?php
-                        foreach ($inscricoes as $inscricao) {
-                            echo "<tr>";
+                    foreach ($oportunidades as $oportunidade) {
+                        echo "<tr>";
                         echo "<td>{$oportunidade['titulo']}</td>";
                         echo "<td>{$oportunidade['descricao']}</td>";
                         echo "<td>{$oportunidade['status']}</td>";
@@ -61,19 +61,29 @@
                         echo "<td>
                                 <form action='./home-organizacao/delete' method='post'>
                                     <input type='hidden' name='idOportunidade' value='{$oportunidade['id']}'>
-                        
+                                    <input type='hidden' name='status' value='true'>
+                                    <button type='submit'>Deletar</button>
+                                </form>
+                            </td>";
 
-                            echo "</tr>";
-                        }
-    
-                        echo "</tbody>";
-                        echo "</table>";
-                    ?>
-                </table>
-    
-                <?php
-                }
+                        /*echo "<td>
+                                <form action='./atualizar-inscricao' method='post'>
+                                    <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
+                                    <input type='hidden' name='status' value='false'>
+                                    <button type='submit'>Recusar</button>
+                                </form>
+                            </td>";*/
+                        echo "</tr>";
+                    } 
+                    
+                    echo "</tbody>";
+                    echo "</table>";
                 ?>
+            </table>
+
+            <?php
+            }
+            ?>
     
             </div>
     
@@ -134,16 +144,16 @@
                                     <input type='hidden' name='status' value='true'>
                                     <button type='submit'>Deletar</button>
                                 </form>
-                            </td>";
+                            </td>"; 
                         /*echo "<td>
                                 <form action='./atualizar-inscricao' method='post'>
                                     <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
                                     <input type='hidden' name='status' value='false'>
                                     <button type='submit'>Recusar</button>
                                 </form>
-                            </td>";
+                            </td>"; */
                         echo "</tr>";
-                    }
+                        }
     
                     echo "</tbody>";
                     echo "</table>";
@@ -153,4 +163,4 @@
     <?php
         include './views/footer.php';
     ?>
-</html>
+    

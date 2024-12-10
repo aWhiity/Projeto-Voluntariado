@@ -27,9 +27,9 @@
 
             <?php
             $controller = new ListarOportunidadeController();
-            $inscricoes = $controller->listarPorId();
+            $oportunidades = $controller->listarPorId();
             
-            if (empty($inscricoes)) {
+            if (empty($oportunidades)) {
                 echo "<h2>Nada por aqui!</h2><br><p>Tente novamente mais tarde.</p>";
             }
 
@@ -43,17 +43,32 @@
                         <th>Status</th>
                         <th>Data Evento</th>
                         <th>Localização</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                    foreach ($inscricoes as $inscricao) {
+                    foreach ($oportunidades as $oportunidade) {
                         echo "<tr>";
-                        echo "<td>{$inscricao['titulo']}</td>";
-                        echo "<td>{$inscricao['descricao']}</td>";
-                        echo "<td>{$inscricao['status']}</td>";
-                        echo "<td>{$inscricao['data_evento']}</td>";
-                        echo "<td>{$inscricao['localizacao']}</td>";
+                        echo "<td>{$oportunidade['titulo']}</td>";
+                        echo "<td>{$oportunidade['descricao']}</td>";
+                        echo "<td>{$oportunidade['status']}</td>";
+                        echo "<td>{$oportunidade['data_evento']}</td>";
+                        echo "<td>{$oportunidade['localizacao']}</td>";
+                        echo "<td>
+                                <form action='./home-organizacao/delete' method='post'>
+                                    <input type='hidden' name='idOportunidade' value='{$oportunidade['id']}'>
+                                    <input type='hidden' name='status' value='true'>
+                                    <button type='submit'>Deletar</button>
+                                </form>
+                            </td>";
+                        /*echo "<td>
+                                <form action='./atualizar-inscricao' method='post'>
+                                    <input type='hidden' name='idInscricao' value='{$inscricao['id']}'>
+                                    <input type='hidden' name='status' value='false'>
+                                    <button type='submit'>Recusar</button>
+                                </form>
+                            </td>";*/
                         echo "</tr>";
                     } 
                     
@@ -73,7 +88,7 @@
             <main>
                 <form action="./home-organizacao" method="POST">
 
-                <label>Titulo: </label> <input type="text" name="tituloOp" value =<?= $tituloOp ?? '' ?> > <br>
+                <label>Titulo: </label> <input type="text" name="titulo" value =<?= $titulo ?? '' ?> > <br>
                 <label>Descrição: </label> <input type="text" name="descricao" value =<?= $descricao ?? '' ?> > <br>
                 <label>Data do Evento: </label> <input type="text" name="data" value =<?= $data ?? '' ?> > <br>
                 <label>Localização: </label> <input type="text" name="local" value =<?= $local ?? '' ?> > <br>

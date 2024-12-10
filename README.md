@@ -4,8 +4,8 @@ Projeto de Plataforma de Voluntariado
 Este projeto é uma plataforma de voluntariado que conecta pessoas físicas e organizações. Usuários voluntários podem se inscrever e se candidatar para ajudar em pedidos postados por organizações, enquanto estas podem gerenciar os pedidos de ajuda e avaliar os voluntários.
 
 ## Participantes
-- Bárbara Hoffmam Wosiack - Controle de login e dashboards de voluntário e organização;
-- Luiz Felipe Hildebrant - Controle de cadastro e listagem de oportunidades, voluntários e organizações;
+- Bárbara Hoffmam Wosiack - Controle de login, dashboards de voluntário e organização, cadastro de oportunidades;
+- Luiz Felipe Hildebrant - Controle de cadastro, listagem de oportunidades, voluntários e organizações e configuração de rotas.
 - Milena Alves Andrade - Criação dos arquivos model e banco de dados.
 
 ## Instalação
@@ -29,18 +29,21 @@ Acesse http://localhost/Projeto-Voluntariado no navegador para iniciar a aplica�
 
 ## Uso
 Ao acessar a página de Login, o usuário pode cadastrar-se como voluntário ou organização.
-Como voluntário, é possível vizualizar os pedidos de ajuda e avaliar organizações.
+Como voluntário, é possível visualizar os pedidos de ajuda e avaliar organizações.
 Como organização, é possível criar pedidos de ajuda e avaliar os voluntários que auxiliaram.
 
 
 ## Funcionalidades
-- Cadastro e Login;
-- Dashboard para Voluntários;
-- Dashboard para Organizações.
+- Cadastro e login;
+- Dashboard para voluntários;
+- Cadastro em oportunidades de voluntariado;
+- Dashboard para organizações;
+- Cadastro de oportunidades de voluntariado;
+- Organizações podem aprovar/reprovar o cadastro de um voluntário;
+- Melhorias no login e validação dos dados.
 
 ## Bugs e Funcionalidades faltantes
-- Listar_organizacao.model e listar_voluntario.model não estão ligados a controller e view.
-- Bug no pedido de ajuda de voluntariado na homeOrganizacao.
 - Falhas nas avaliações de organizações e voluntários.
 - Página de perfil não implementada.
-- Bugs nas páginas iniciais.
+- CSS não implementado nos feedbacks de cadastro.
+

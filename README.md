@@ -89,5 +89,7 @@ Este projeto é uma plataforma de voluntariado que conecta pessoas físicas e or
 - Falhas nas avaliações de organizações e voluntários.
 - Página de perfil não implementada.
 - CSS ausente nos feedbacks de cadastro.
+- Funcionalidade faltante de editar.
+- Funcionalidade faltante de deletar usuários e inscrições.
 
 ---
